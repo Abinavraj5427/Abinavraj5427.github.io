@@ -1,24 +1,46 @@
-#title { 
-    color: #f2415f;
-    font-size: 250%;
+.page-title{
+    font-size: 6vw;
+    letter-spacing: 2.6vw;
+    text-transform: uppercase;
     text-align: center;
+    color: hsla(192, 18%, 49%, 1);
+    text-shadow: 0px 6px 10px #3d5257;
+    text-indent: 2.6vw;
+    opacity: 1;
+    font-weight: 100;
+    width: 100vw;
+    max-width: 100%;
+    display: block;
+    margin: 0;
+    position: relative;
+    user-select: none;
+    white-space: nowrap;
+    left: auto;
+    pointer-events: none;
+}
+
+.page-subtitle{
+    text-transform: uppercase;
+    text-align: center;
+    pointer-events: none;
+    font-size: 1vw;
+    letter-spacing: 1.8vw;
+    text-indent: 1.8vw;
+    color: rgba(255,255,255,.5);
+    position: relative;
 }
 
 body {
-    background-color: #1e1b23;
+    background-color: #030326;
 }
 
-.header {
-    background-color: #3a3a3b;
-    padding: 20px;
-    margin: 20px;
-    margin-bottom: 0px;
-}
-
-p, h1, li{
-    color: #9eacca;
-    font-family: verdana;
-    text-align: left;
+.heading {
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    text-align: center;
 }
 
 .main-content{
@@ -29,20 +51,28 @@ p, h1, li{
 
 /* The navbar container */
 .topnav {
-    overflow: hidden;
     background-color: #333;
-    margin: 20px;
-    margin-top:0px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
   }
   
   /* Navbar links */
   .topnav a {
-    float: left;
-    display: block;
+    display: inline-block;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    text-transform: uppercase;
+    padding-right: 4vw;
+    padding-left: 4vw;
+    letter-spacing: 0.2vw;
+    text-indent: .2vw;
+    /*font-size: 1vw;*/
   }
   
   /* Links - change color on hover */
