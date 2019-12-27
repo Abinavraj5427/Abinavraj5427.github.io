@@ -125,3 +125,17 @@ img {
     display: table;
     clear: both;
   }
+
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #333 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(245, 6, 6); 
+  }
