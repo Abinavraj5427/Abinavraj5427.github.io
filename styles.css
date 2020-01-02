@@ -158,3 +158,36 @@ img {
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(245, 6, 6); 
   }
+
+
+  
+.slide .inside {
+    display: table;
+    height: 100%;
+    width: 100%;
+    padding: 0 3em;
+}
+
+.slide .inside p{
+    color: #ecf0f1;
+    font-size: 2em;
+    display: table-cell;
+    width: 100%;
+    clear: both;
+    vertical-align: middle; 
+    text-align: center; 
+}
+
+.slide .inside ul{
+    color: #ecf0f1;
+    display: table-cell;
+    font-size: 2em;
+    width: 100%;
+    clear: both;
+    vertical-align: middle; 
+    text-align: center; 
+    list-style-type:none
+}
+
+
+* { box-sizing: border-box }
