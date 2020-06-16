@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="index.css">
-        <link rel="stylesheet" type="text/css" href="treeview.css">
-        <script src = "treeview.js"></script>
+        <!-- JQuery & PopperJS CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap Treeview -->
+        <script src="./js/bootstrap-treeview.js"></script>
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="./css/index.css">
+        <link rel="stylesheet" type="text/css" href="./css/treeview.css">
+        
+        <!-- Custom JS -->
+        <script src = "./js/treeview.js"></script>
+
         <title>Flow Management | Tree View</title>
     </head>
     <body>
-        <!-- Navigation -->
-        <ul id = "navigation">
-            <li class = "links"><b>Welcome Husky.</b></li>
-            <li class = "links"><a href = "./treeview.html">Tree View</a></li>
-            <li class = "links"><a href = "./flowview.html">Flow View</a></li>
-            <li class = "tools"><a href= "./settings.html">Settings</a></li>
-            <li class = "tools"><a href= "./login.html" onclick = "logout(); return false;">Logout</a></li>
-        </ul>
-
-        <!-- Heading -->
-        <h1>Flow Management | Tree View</h1>
-        <br/>
-
-        <input id = "create_flare" type = "submit" value = "Create Flare" onclick = "create_flare()"></input>
-        <!-- Tree -->
-        <div class = "tree_container">
-            <ul class = "list">
-                <li>
-                    
-                    <div class = "child" onclick = "nodeClicked(1, 'flare')">
-                        <p>Flare | Flare 1</p>
-                    </div>
-                    
-                    <ul class = "list">
-                        <div class = "child" onclick = "nodeClicked(1, 'header')">
-                            <p>Header | Header 1</p>
-                        </div>
-                    </ul>
-                </li>
-                <li> 
-                    <div class = "child" onclick = "nodeClicked(2, 'flare')">
-                        <p>Flare | Flare 2</p>
-                    </div>
-                </li>
-            </ul>
+        <!-- Collapsible Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSideBar()">&times;</a>
+            <ul id = "sidebar_options"></ul>
         </div>
-        
+
+        <div id = "main">
+            <!-- Navigation -->
+            <ul id = "navigation">
+                <li class = "links"><b>Welcome Husky.</b></li>
+                <li class = "links"><a href = "./treeview.html">Tree View</a></li>
+                <li class = "links"><a href = "./flowview.html">Flow View</a></li>
+                <li class = "tools"><a href= "./settings.html">Settings</a></li>
+                <li class = "tools"><a href= "./login.html" onclick = "logout(); return false;">Logout</a></li>
+            </ul>
+
+            <!-- Heading -->
+            <h1>Flow Management | Tree View</h1>
+            <br/>
+
+            <input id = "create_flare" type = "submit" value = "Create Flare" onclick = "openSideBar('plant')"></input>
+            
+            <!-- Tree -->
+            <div id = "tree"></div>
+
+        </div>
     </body>
     <footer>
         
