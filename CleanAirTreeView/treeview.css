@@ -1,0 +1,26 @@
+/*Tree View Child*/
+.child{
+    width: 75%;
+    margin: 10px;
+    padding: 1px 16px;
+    background-color: #007cc3;
+    border-radius: 10px;
+    text-align: left;
+    color: white;
+}
+
+.child:hover{
+    background-color: #005a8f;
+}
+
+/*Tree View List*/
+.list{
+    list-style-type: none;
+    padding: 0;
+}
+
+/*Create Flare Button*/
+#create_flare{
+    margin:10px;
+}
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="treeview.css">
+        <script src = "treeview.js"></script>
+        <title>Flow Management | Tree View</title>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <ul id = "navigation">
+            <li class = "links"><b>Welcome Husky.</b></li>
+            <li class = "links"><a href = "./treeview.html">Tree View</a></li>
+            <li class = "links"><a href = "./flowview.html">Flow View</a></li>
+            <li class = "tools"><a href= "./settings.html">Settings</a></li>
+            <li class = "tools"><a href= "./login.html" onclick = "logout(); return false;">Logout</a></li>
+        </ul>
+
+        <!-- Heading -->
+        <h1>Flow Management | Tree View</h1>
+        <br/>
+
+        <input id = "create_flare" type = "submit" value = "Create Flare" onclick = "create_flare()"></input>
+        <!-- Tree -->
+        <div class = "tree_container">
+            <ul class = "list">
+                <li>
+                    
+                    <div class = "child" onclick = "nodeClicked(1, 'flare')">
+                        <p>Flare | Flare 1</p>
+                    </div>
+                    
+                    <ul class = "list">
+                        <div class = "child" onclick = "nodeClicked(1, 'header')">
+                            <p>Header | Header 1</p>
+                        </div>
+                    </ul>
+                </li>
+                <li> 
+                    <div class = "child" onclick = "nodeClicked(2, 'flare')">
+                        <p>Flare | Flare 2</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+    </body>
+    <footer>
+        
+    </footer>
+</html>
