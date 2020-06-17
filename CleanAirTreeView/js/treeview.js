@@ -8,7 +8,7 @@ $(document).ready(
             levels: 4,
             onNodeSelected: function(event, data){
                 // console.log(data);
-                openSideBar(data.type, data);
+                openSideBar(data.type, data, -1);
             },
         })
     }
@@ -67,12 +67,7 @@ function getTree(){
 
 // Opens the Sidebar
 function openSideBar(type, data){
-    var bar= document.getElementById("sidebar_options");
-    while (bar.firstChild) {
-        bar.removeChild(bar.firstChild);
-    }
-
-    addSideBarElements(bar, type, data, -1);
+    addSideBarElements(type, data, -1);
 
     document.getElementById("sidebar").style.width = "400px";
     document.getElementById("main").style.marginRight = "400px";
@@ -85,18 +80,65 @@ function closeSideBar(){
 }
 
 // Adds Sidebar Elements
-function addSideBarElements(node, type, data){
-    console.log("A");
-    for(var i = 0; i< CRUDS.length; i++){
-        console.log("B");
+function addSideBarElements(type, data, select){
+
+    // Clear Sidebar
+    var bar= document.getElementById("sidebar_options");
+    while (bar.firstChild) {
+        bar.removeChild(bar.firstChild);
+    }
+    
+    // Searching for Selection
+    for(let i = 0; i< CRUDS.length; i++){
+
         if(CRUDS[i].type === type){
-            console.log("C");
-            for(var j = 0; j< CRUDS[i].funcs.length; j++){
-                console.log("D");
+
+            // Adding Sidebar Links
+            for(let j = 0; j< CRUDS[i].funcs.length; j++){
                 var a = document.createElement("a");
                 a.innerHTML = CRUDS[i].funcs[j].topic;
-                a.href = "#";
-                node.appendChild(a);
+                a.href = "javascript:void(0)";
+                a.onclick = (event) => {addSideBarElements(type, data, j); }
+                bar.appendChild(a);
+
+                
+                if(j===select || (select === -1 && j == CRUDS[i].funcs.length-1)){
+                    var total_inputs = CRUDS[i].funcs[j].inputs? CRUDS[i].funcs[j].inputs.length: 0;
+
+                    // Adding Inputs
+                    for(let k = 0; k < total_inputs; k++){
+                        var label = document.createElement('label');
+                        label.innerHTML = CRUDS[i].funcs[j].inputs[k];
+
+                        var input = document.createElement('input');
+                        input.type = 'text';
+                        input.placeholder = 'blank';
+                        if(CRUDS[i].funcs[j].CRUD === "update"){
+                            // console.log(data);
+                            input.value = data[CRUDS[i].funcs[j].inputs[k]];
+                        }
+
+                        var br = document.createElement("br");
+                        bar.appendChild(label);
+                        bar.appendChild(br);
+                        bar.appendChild(input);
+                       
+                    }
+
+                    var br2 = document.createElement("br");
+                    var submit = document.createElement("button");
+                    if(CRUDS[i].funcs[j].CRUD === "update"){
+                        submit.innerHTML = "UPDATE";
+                    } 
+                    else if (CRUDS[i].funcs[j].CRUD === "create"){
+                        submit.innerHTML = "CREATE";
+                    }
+                    else if (CRUDS[i].funcs[j].CRUD === "delete"){
+                        submit.innerHTML = "DELETE";
+                    }
+                    bar.appendChild(br2);
+                    bar.appendChild(submit);
+                }
             }
             break;
         }
@@ -112,7 +154,7 @@ const CRUDS = [
                 CRUD: 'create',
                 topic: 'Create Flare',
                 inputs: [
-                    'flare name'
+                    'name'
                 ]
             }
         ]
@@ -124,14 +166,14 @@ const CRUDS = [
                 CRUD: 'create',
                 topic: 'Create Header',
                 inputs: [
-                    'header name'
+                    'name'
                 ]
             },
             {
                 CRUD: 'create',
                 topic: 'Create Instrument',
                 inputs: [
-                    'instrument name'
+                    'name'
                 ]
             },
             {
@@ -142,7 +184,7 @@ const CRUDS = [
                 CRUD: 'update',
                 topic: 'Update Flare',
                 inputs: [
-                    'header name'
+                    'name'
                 ]
             }
         ]
@@ -154,14 +196,14 @@ const CRUDS = [
                 CRUD: 'create',
                 topic: 'Create Instrument',
                 inputs: [
-                    'Instrument name'
+                    'name'
                 ]
             },
             {
                 CRUD: 'create',
                 topic: 'Create Process',
                 inputs: [
-                    'Process name'
+                    'name'
                 ]
             },
             {
@@ -172,7 +214,7 @@ const CRUDS = [
                 CRUD: 'update',
                 topic: 'Update Header',
                 inputs: [
-                    'header name'
+                    'name'
                 ]
             }
         ]
@@ -195,7 +237,7 @@ const CRUDS = [
                 CRUD: 'update',
                 topic: 'Update Instrument',
                 inputs: [
-                    'Instrument name'
+                    'name'
                 ]
             }
         ]
@@ -227,7 +269,7 @@ const CRUDS = [
                 CRUD: 'update',
                 topic: 'Update Process',
                 inputs: [
-                    'process name'
+                    'name'
                 ]
             }
         ]
