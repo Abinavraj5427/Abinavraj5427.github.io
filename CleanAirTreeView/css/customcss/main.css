@@ -1,0 +1,40 @@
+/*General Text CSS*/
+h1, h2, h3, h4, h5, p, a, b{
+    font-family: 'Frutiger','Arial';
+}
+
+h1{
+    text-align: center;
+}
+
+/*Navigation CSS*/
+#navigation li *{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover{
+    background-color: #005a8f;
+}
+
+
+
+.links{
+    float: left;
+}
+
+.tools{
+    float: right;
+}
+
+#navigation{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #007cc3;
+}
+

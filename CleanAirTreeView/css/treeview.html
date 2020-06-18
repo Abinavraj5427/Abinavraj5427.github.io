@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- JQuery & PopperJS CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap Treeview -->
+        <script src="./js/bstreeview.js"></script>
+        <link href="./css/bstreeview.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="./css/index.css">
+        <link rel="stylesheet" type="text/css" href="./css/treeview.css">
+        
+        <!-- Custom JS -->
+        <script src = "./js/treeview.js"></script>
+
+        <title>Flow Management | Tree View</title>
+    </head>
+    <body>
+        <!-- Collapsible Sidebar
+        <div id="sidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSideBar()">&times;</a>
+            <div id = "sidebar_options"></div>
+        </div> -->
+
+        <div id = "main">
+            <!-- Navigation -->
+            <ul id = "navigation">
+                <li class = "links"><b>Welcome Husky.</b></li>
+                <li class = "links"><a href = "./treeview.html">Tree View</a></li>
+                <li class = "links"><a href = "./flowview.html">Flow View</a></li>
+                <li class = "tools"><a href= "./settings.html">Settings</a></li>
+                <li class = "tools"><a href= "./login.html" onclick = "logout(); return false;">Logout</a></li>
+            </ul>
+
+            <!-- Heading -->
+            <h1>Flow Management | Tree View</h1>
+            <br/>
+
+            <!-- <input id = "create_flare" type = "submit" value = "Create Flare" onclick = "openSideBar('plant')"></input> -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+
+                        <!-- Tree -->
+                        <div class="treeview w-20 border">
+                            <h6 class="pt-3 pl-3">Folders</h6>
+                            <hr>
+                            <ul class="mb-1 pl-3 pb-2">
+                              <li><i class="fas fa-angle-right rotate"></i>
+                                <span><i class="far fa-envelope-open ic-w mx-1"></i>Mail</span>
+                                <ul class="nested">
+                                  <li><i class="far fa-bell ic-w mr-1"></i>Offers</li>
+                                  <li><i class="far fa-address-book ic-w mr-1"></i>Contacts</li>
+                                  <li><i class="fas fa-angle-right rotate"></i>
+                                    <span><i class="far fa-calendar-alt ic-w mx-1"></i>Calendar</span>
+                                    <ul class="nested">
+                                      <li><i class="far fa-clock ic-w mr-1"></i>Deadlines</li>
+                                      <li><i class="fas fa-users ic-w mr-1"></i>Meetings</li>
+                                      <li><i class="fas fa-basketball-ball ic-w mr-1"></i>Workouts</li>
+                                      <li><i class="fas fa-mug-hot ic-w mr-1"></i>Events</li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><i class="fas fa-angle-right rotate"></i>
+                                <span><i class="far fa-folder-open ic-w mx-1"></i>Inbox</span>
+                                <ul class="nested">
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Admin</li>
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Corporate</li>
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Finance</li>
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Other</li>
+                                </ul>
+                              </li>
+                              <li><i class="fas fa-angle-right rotate"></i>
+                                <span><i class="far fa-gem ic-w mx-1"></i>Favourites</span>
+                                <ul class="nested">
+                                    <li><i class="fas fa-pepper-hot ic-w mr-1"></i>Restaurants</li>
+                                    <li><i class="far fa-eye ic-w mr-1"></i>Places</li>
+                                    <li><i class="fas fa-gamepad ic-w mr-1"></i>Games</li>
+                                    <li><i class="fas fa-cocktail ic-w mr-1"></i>Coctails</li>
+                                    <li><i class="fas fa-pizza-slice ic-w mr-1"></i>Food</li>
+                                  </ul>
+                              </li>
+                              <li><i class="far fa-comment ic-w mr-1"></i>Notes</li>
+                              <li><i class="fas fa-cogs ic-w mr-1"></i>Settings</li>
+                              <li><i class="fas fa-desktop ic-w mr-1"></i>Devices</li>
+                              <li><i class="fas fa-trash-alt ic-w mr-1"></i>Deleted Items</li>
+                            </ul>
+                          </div>
+                        
+                    </div>
+
+                    <div class="col" id = "data-enclosing">
+
+                        <!-- Data -->
+                        <div id = "data"><h3>Click Node to Display Data</h3></div>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+    <footer>
+        
+    </footer>
+</html>
