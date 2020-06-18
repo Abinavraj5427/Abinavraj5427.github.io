@@ -12580,24 +12580,24 @@ ul.stepper li.completed a .label {
 
 .treeview-animated .treeview-animated-list .treeview-animated-items .closed .fa-angle-right.down {
     position: relative;
-    color: #f8f9fa;
+    /* color: #f8f9fa; */
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg)
 }
 
 .treeview-animated .treeview-animated-list .treeview-animated-items .open {
-    background-color: #32a0ff;
+    /* background-color: #32a0ff; */
     -webkit-transition: all .1s linear;
     transition: all .1s linear
 }
 
 .treeview-animated .treeview-animated-list .treeview-animated-items .open:hover {
-    color: #f8f9fa;
+    /* color: #f8f9fa; */
     background-color: #32a0ff
 }
 
 .treeview-animated .treeview-animated-list .treeview-animated-items .open span {
-    color: #f8f9fa
+    /* color: #f8f9fa */
 }
 
 .treeview-animated .treeview-animated-list .treeview-animated-element {

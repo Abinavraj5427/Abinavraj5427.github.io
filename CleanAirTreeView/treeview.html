@@ -1,186 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design for Bootstrap</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="css/mdb.min.css">
-  <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="customcss/main.css">
-  <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="customcss/treeview.css">
-</head>
-<body>
+<html>
+    <head>
+        <!-- JQuery & PopperJS CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
- 
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+        <!-- Bootstrap Treeview -->
+        <script src="./js/bstreeview.js"></script>
+        <link href="./css/bstreeview.css" rel="stylesheet">
 
- <!-- Navigation -->
- <ul id = "navigation">
-  <li class = "links"><b>Welcome Husky.</b></li>
-  <li class = "links"><a href = "./treeview.html">Tree View</a></li>
-  <li class = "links"><a href = "./flowview.html">Flow View</a></li>
-  <li class = "tools"><a href= "./settings.html">Settings</a></li>
-  <li class = "tools"><a href= "./login.html" onclick = "logout(); return false;">Logout</a></li>
-</ul>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="./css/index.css">
+        <link rel="stylesheet" type="text/css" href="./css/treeview.css">
+        
+        <!-- Custom JS -->
+        <script src = "./js/treeview.js"></script>
 
-<!-- Heading -->
-<h1>Flow Management</h1>
-<br/>
+        <title>Flow Management | Tree View</title>
+    </head>
+    <body>
+        <!-- Collapsible Sidebar
+        <div id="sidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSideBar()">&times;</a>
+            <div id = "sidebar_options"></div>
+        </div> -->
 
-<!-- <input id = "create_flare" type = "submit" value = "Create Flare" onclick = "openSideBar('plant')"></input> -->
-
-<div class="container">
-  <div class="row">
-      <div class="col">
-
-          <!-- Tree -->
-          <div class="treeview-animated">
-            <h6 class="pt-3 pl-3">TreeView</h6>
-            <hr>
-            <ul id = "root-ul" class="treeview-animated-list mb-3">
-              <li class="treeview-animated-items">
-                <a class="closed">
-                  <i class="fas fa-angle-right"></i>
-                  <span>Mail</span>
-                </a>
-                <ul class="nested">
-                  <li>
-                    <div class="treeview-animated-element">Offers
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Contacts
-                  </li>
-                  <li class="treeview-animated-items">
-                    <a class="closed">
-                      <i class="fas fa-angle-right"></i>
-                      <span>Calendar</span>
-                    </a>
-                    <ul class="nested">
-                      <li>
-                        <div class="treeview-animated-element">Deadlines
-                      </li>
-                      <li>
-                        <div class="treeview-animated-element">Meetings
-                      </li>
-                      <li>
-                        <div class="treeview-animated-element">Workouts
-                      </li>
-                      <li>
-                        <div class="treeview-animated-element">Events
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="treeview-animated-items">
-                <a class="closed">
-                  <i class="fas fa-angle-right"></i>
-                  <span>Inbox</span>
-                </a>
-                <ul class="nested">
-                  <li>
-                    <div class="treeview-animated-element">Admin
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Corporate
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Finance
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Other
-                  </li>
-                </ul>
-              </li>
-              <li class="treeview-animated-items">
-                <a class="closed">
-                  <i class="fas fa-angle-right"></i>
-                  <span>Favorites</span>
-                </a>
-                <ul class="nested">
-                  <li class="treeview-animated-items">
-                    <a class="closed">Restaurants</a>
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Places
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Games
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Coctails
-                  </li>
-                  <li>
-                    <div class="treeview-animated-element">Food
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <div class="treeview-animated-element">Notes
-              </li>
-              <li>
-                <div class="treeview-animated-element">Settings
-              </li>
-              <li>
-                <div class="treeview-animated-element">Devices
-              </li>
-              <li>
-                <div class="treeview-animated-element">Deleted Items
-              </li>
+        <div id = "main">
+            <!-- Navigation -->
+            <ul id = "navigation">
+                <li class = "links"><b>Welcome Husky.</b></li>
+                <li class = "links"><a href = "./treeview.html">Tree View</a></li>
+                <li class = "links"><a href = "./flowview.html">Flow View</a></li>
+                <li class = "tools"><a href= "./settings.html">Settings</a></li>
+                <li class = "tools"><a href= "./login.html" onclick = "logout(); return false;">Logout</a></li>
             </ul>
-          </div>
-          
-      </div>
 
-      <div class="col" id = "data-enclosing">
+            <!-- Heading -->
+            <h1>Flow Management | Tree View</h1>
+            <br/>
 
-          <!-- Data -->
-          <div id = "data"><h3>Click Node to Display Data</h3></div>
-          
-      </div>
-  </div>
-</div>
+            <!-- <input id = "create_flare" type = "submit" value = "Create Flare" onclick = "openSideBar('plant')"></input> -->
 
+            <div class="container">
+                <div class="row">
+                    <div class="col">
 
+                        <!-- Tree -->
+                        <div class="treeview w-20 border">
+                            <h6 class="pt-3 pl-3">Folders</h6>
+                            <hr>
+                            <ul class="mb-1 pl-3 pb-2">
+                              <li><i class="fas fa-angle-right rotate"></i>
+                                <span><i class="far fa-envelope-open ic-w mx-1"></i>Mail</span>
+                                <ul class="nested">
+                                  <li><i class="far fa-bell ic-w mr-1"></i>Offers</li>
+                                  <li><i class="far fa-address-book ic-w mr-1"></i>Contacts</li>
+                                  <li><i class="fas fa-angle-right rotate"></i>
+                                    <span><i class="far fa-calendar-alt ic-w mx-1"></i>Calendar</span>
+                                    <ul class="nested">
+                                      <li><i class="far fa-clock ic-w mr-1"></i>Deadlines</li>
+                                      <li><i class="fas fa-users ic-w mr-1"></i>Meetings</li>
+                                      <li><i class="fas fa-basketball-ball ic-w mr-1"></i>Workouts</li>
+                                      <li><i class="fas fa-mug-hot ic-w mr-1"></i>Events</li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                              <li><i class="fas fa-angle-right rotate"></i>
+                                <span><i class="far fa-folder-open ic-w mx-1"></i>Inbox</span>
+                                <ul class="nested">
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Admin</li>
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Corporate</li>
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Finance</li>
+                                  <li><i class="far fa-folder-open ic-w mr-1"></i>Other</li>
+                                </ul>
+                              </li>
+                              <li><i class="fas fa-angle-right rotate"></i>
+                                <span><i class="far fa-gem ic-w mx-1"></i>Favourites</span>
+                                <ul class="nested">
+                                    <li><i class="fas fa-pepper-hot ic-w mr-1"></i>Restaurants</li>
+                                    <li><i class="far fa-eye ic-w mr-1"></i>Places</li>
+                                    <li><i class="fas fa-gamepad ic-w mr-1"></i>Games</li>
+                                    <li><i class="fas fa-cocktail ic-w mr-1"></i>Coctails</li>
+                                    <li><i class="fas fa-pizza-slice ic-w mr-1"></i>Food</li>
+                                  </ul>
+                              </li>
+                              <li><i class="far fa-comment ic-w mr-1"></i>Notes</li>
+                              <li><i class="fas fa-cogs ic-w mr-1"></i>Settings</li>
+                              <li><i class="fas fa-desktop ic-w mr-1"></i>Devices</li>
+                              <li><i class="fas fa-trash-alt ic-w mr-1"></i>Deleted Items</li>
+                            </ul>
+                          </div>
+                        
+                    </div>
 
+                    <div class="col" id = "data-enclosing">
 
+                        <!-- Data -->
+                        <div id = "data"><h3>Click Node to Display Data</h3></div>
+                        
+                    </div>
+                </div>
+            </div>
 
-
-
-
-
-
-
-
-
-
-  <!-- SCRIPTS -->
-
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Test JS -->
-  <script type="text/javascript" src="customjs/test.js"></script>
-  <!-- TreeView JS -->
-  <script type="text/javascript" src="customjs/treeview.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript"></script>
-
-</body>
+        </div>
+    </body>
+    <footer>
+        
+    </footer>
 </html>
