@@ -8,8 +8,6 @@ $(document).ready(
       showTree();
 
       $('.treeview-animated').mdbTreeview();
-        
-      
     }
 )
 
@@ -99,6 +97,7 @@ function showTree(){
     flare_li.classList.add("treeview-animated-items");
     var flare_a = document.createElement("a");
     flare_a.classList.add("closed");
+    flare_a.onclick = () => {displayData(JSON.stringify(flare));}
     var flare_span = document.createElement("span");
     flare_span.innerHTML = flare.name;
 
@@ -124,6 +123,7 @@ function showTree(){
         head_inst_li.classList.add("treeview-animated-items");
         var head_inst_a = document.createElement("a");
         head_inst_a.classList.add("closed");
+        head_inst_a.onclick = () => {displayData(JSON.stringify(head_inst));}
         var head_inst_span = document.createElement("span");
         head_inst_span.innerHTML = head_inst.name;
 
@@ -148,6 +148,7 @@ function showTree(){
             proc_inst_li.classList.add("treeview-animated-items");
             var proc_inst_a = document.createElement("a");
             proc_inst_a.classList.add("closed");
+            proc_inst_a.onclick = () => {displayData(JSON.stringify(proc_inst));}
             var proc_inst_span = document.createElement("span");
             proc_inst_span.innerHTML = proc_inst.name || proc_inst.pi_tag;
 
@@ -172,6 +173,7 @@ function showTree(){
                 inst_li.classList.add("treeview-animated-items");
                 var inst_a = document.createElement("a");
                 inst_a.classList.add("closed");
+                inst_a.onclick = () => {displayData(JSON.stringify(inst));}
                 var inst_span = document.createElement("span");
                 inst_span.innerHTML = inst.pi_tag;
 
@@ -205,19 +207,25 @@ function showTree(){
 }
 
 
-// function displayData(data){
-//     // console.log(data)
-//     var databox = document.getElementById("data");
-//     while (databox.firstChild) {
-//         databox.removeChild(databox.firstChild);
-//     }
-//     var h2 = document.createElement("h2");
-//     h2.innerHTML = data.text;
-//     var p = document.createElement("p");
-//     p.innerHTML = "Name: "+data.text;
-//     databox.appendChild(h2);
-//     databox.appendChild(p);
-// }
+function displayData(data){
+    // console.log(data)
+    var databox = document.getElementById("data");
+    while (databox.firstChild) {
+        databox.removeChild(databox.firstChild);
+    }
+    data = JSON.parse(data);
+    var h3 = document.createElement("h3");
+    h3.innerHTML = "Properties:"
+    databox.appendChild(h3);
+    for(var key in data){
+      if(key !== 'nodes' && !key.includes("id")){
+        var p = document.createElement("p");
+        p.innerHTML = key+": "+ data[key];
+        databox.appendChild(p);
+      }
+    }
+    
+}
 
 // // Opens the Sidebar
 // function openSideBar(type, data){
