@@ -8,7 +8,9 @@ var tree_instrument_data = instrument_data;
 // Building Tree
 $(document).ready(
     function(){
-
+      var create_flare_btn = document.getElementById("create-flare");
+      var create_flare_data = {id:1}
+      create_flare_btn.onclick = () => {displayData(JSON.stringify(create_flare_data))}
       buildTree();
       showTree();
 
@@ -66,21 +68,23 @@ function buildTree(){
           flare["nodes"].push(header);
         }
 
-        // Adding Instruments to Flare
-        tree_instruments.map(instrument => {
-          if(instrument.parent_type === 'flare' && instrument.parent_id == header.id){
-            instrument["nodes"] = [];
+        
+      });
 
-            //Adding Instrument Data
-            tree_instrument_data.map(data => {
-              if(data.instrument_id == instrument.id){
-                instrument["nodes"].push(data);
-              }
-            });
-            
-            flare["nodes"].push(instrument);
-          }
-        });
+      // Adding Instruments to Flare
+      tree_instruments.map(instrument => {
+        if(instrument.parent_type === 'flare' && instrument.parent_id == flare.id){
+          instrument["nodes"] = [];
+
+          //Adding Instrument Data
+          tree_instrument_data.map(data => {
+            if(data.instrument_id == instrument.id){
+              instrument["nodes"].push(data);
+            }
+          });
+          
+          flare["nodes"].push(instrument);
+        }
       });
       tree.push(flare);
     }
@@ -91,6 +95,7 @@ function buildTree(){
 
 
 function showTree(){
+
   var tree_root = document.getElementById("root-ul");
   while (tree_root.firstChild) {
     tree_root.removeChild(tree_root.firstChild);
@@ -214,6 +219,7 @@ function showTree(){
 
 
 function displayData(data){
+    // console.log(data);
     // Displays Data stored in Node
     var databox = document.getElementById("data");
     while (databox.firstChild) {
@@ -391,6 +397,7 @@ function displayData(data){
 
 // Adds Node To Tree
 function createNode(parent_type, parent_id, data, create_type){
+    console.log(parent_type);
     var get_parent_id_key = {
       plant: "plant_id",
       flare: "flare_id",
@@ -408,6 +415,7 @@ function createNode(parent_type, parent_id, data, create_type){
       data[get_parent_id_key[parent_type]] = parent_id;
       if(create_type === "flare"){
         data["id"] = tree_flares[tree_flares.length-1].id+1;
+        // console.log(tree_flares[tree_flares.length-1].id+1)
         data["nodes"] = [];
         tree_flares.push(data);
       } else if (create_type === "header"){
