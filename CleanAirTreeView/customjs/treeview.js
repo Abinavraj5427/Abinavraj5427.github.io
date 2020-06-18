@@ -1,4 +1,9 @@
 var tree = [];
+var tree_flares = flares;
+var tree_headers = headers;
+var tree_processes = processes;
+var tree_instruments = instruments;
+var tree_instrument_data = instrument_data;
 
 // Building Tree
 $(document).ready(
@@ -23,32 +28,33 @@ function printtree(){
 
 // Generates Initial Tree
 function buildTree(){
+  tree = [];
   var plant_id = 1; //testing value
 
   // Adding Flares
-  flares.map(flare => {
+  tree_flares.map(flare => {
     if(flare.plant_id == plant_id){
       flare["nodes"] = [];
 
       // Adding Headers
-      headers.map(header => {
+      tree_headers.map(header => {
         if(header.flare_id == flare.id){
           header["nodes"] = [];
 
           // Adding Processes
-          processes.map(process => {
+          tree_processes.map(process => {
             if(process.header_id == header.id){
               header["nodes"].push(process);
             }
           });
 
           // Adding Instruments to Header
-          instruments.map(instrument => {
+          tree_instruments.map(instrument => {
             if(instrument.parent_type === 'header' && instrument.parent_id == header.id){
               instrument["nodes"] = [];
 
               //Adding Instrument Data
-              instrument_data.map(data => {
+              tree_instrument_data.map(data => {
                 if(data.instrument_id == instrument.id){
                   instrument["nodes"].push(data);
                 }
@@ -61,12 +67,12 @@ function buildTree(){
         }
 
         // Adding Instruments to Flare
-        instruments.map(instrument => {
+        tree_instruments.map(instrument => {
           if(instrument.parent_type === 'flare' && instrument.parent_id == header.id){
             instrument["nodes"] = [];
 
             //Adding Instrument Data
-            instrument_data.map(data => {
+            tree_instrument_data.map(data => {
               if(data.instrument_id == instrument.id){
                 instrument["nodes"].push(data);
               }
@@ -208,7 +214,7 @@ function showTree(){
 
 
 function displayData(data){
-    // console.log(data)
+    // Displays Data stored in Node
     var databox = document.getElementById("data");
     while (databox.firstChild) {
         databox.removeChild(databox.firstChild);
@@ -217,13 +223,65 @@ function displayData(data){
     var h3 = document.createElement("h3");
     h3.innerHTML = "Properties:"
     databox.appendChild(h3);
+    var parent_type = "";
     for(var key in data){
+      if(key.includes("id") && key!== "id")
+        parent_type = key;
       if(key !== 'nodes' && !key.includes("id")){
         var p = document.createElement("p");
         p.innerHTML = key+": "+ data[key];
         databox.appendChild(p);
       }
     }
+
+    // Displaying CRUD Options:
+    var map_parent_child = {
+      plant_id: "flare",
+      flare_id: "header",
+      header_id: "process",
+      parent_id: "instrument",
+      instrument_id: "instrument_data",
+    }
+    
+    
+    var selected_type = map_parent_child[parent_type] || "plant";
+    for(let i = 0; i< CRUDS.length; i++){
+      if(CRUDS[i].type === selected_type){
+        var funcs = CRUDS[i].funcs;
+        for(let j = 0; j < funcs.length; j++){
+          databox.appendChild(document.createElement("hr"));
+          var h4 = document.createElement("h5");
+          h4.innerHTML = funcs[j].topic;
+          databox.appendChild(h4);
+          //CREATE ONLY
+          let CRUD_TYPE = funcs[j].CRUD;
+          if(CRUD_TYPE === "create"){
+            var inputs = funcs[j].inputs;
+            for(let k = 0; k< inputs.length; k++){
+              var input = document.createElement("input");
+              input.placeholder = inputs[k];
+              input.id = selected_type+"_"+data.id+"_"+inputs[k]+"_"+CRUD_TYPE+"_"+funcs[j].createType;
+              databox.appendChild(input);
+            }
+            
+            var submit = document.createElement("button");
+            submit.innerHTML = "CREATE";
+            submit.onclick = () => {
+              let new_data = {}
+              for(let k = 0; k< inputs.length; k++){
+                var input_id = selected_type+"_"+data.id+"_"+inputs[k]+"_"+CRUD_TYPE+"_"+funcs[j].createType;
+                new_data[inputs[k]] = document.getElementById(input_id).value;
+              }
+
+              createNode(selected_type, data.id, new_data, funcs[j].createType)
+            }
+            databox.appendChild(submit);
+          }
+
+        }
+      }
+    }
+
     
 }
 
@@ -331,166 +389,178 @@ function displayData(data){
 //     closeSideBar();
 // }
 
-// // Adds Node To Tree
-// function createNode(loc, type, inputs){
-//     var loclist = loc.split('.');
-//     console.log(loclist);
-//     var newnode = { type: type };
+// Adds Node To Tree
+function createNode(parent_type, parent_id, data, create_type){
+    var get_parent_id_key = {
+      plant: "plant_id",
+      flare: "flare_id",
+      header: "header_id",
+      instrument_data: "instrument_id",
+    }
 
-//     for(let i = 0; i< inputs.length;i++){
-//         newnode[inputs[i]] = document.getElementById(inputs[i]).value;
-//     }    
-//     newnode["text"] = newnode["name"];
-   
+    if(create_type === "instrument"){
+      data["parent_id"] = parent_id;
+      data["parent_type"] = parent_type;
+      data["id"] = tree_instruments[tree_instruments.length-1].id+1;
+      data["nodes"] = [];
+      tree_instruments.push(data);
+    } else {
+      data[get_parent_id_key[parent_type]] = parent_id;
+      if(create_type === "flare"){
+        data["id"] = tree_flares[tree_flares.length-1].id+1;
+        data["nodes"] = [];
+        tree_flares.push(data);
+      } else if (create_type === "header"){
+        data["id"] = tree_headers[tree_headers.length-1].id+1;
+        data["nodes"] = [];
+        tree_headers.push(data);
+      } else if (create_type === "process"){
+        data["id"] = tree_processes[tree_processes.length-1].id+1;
+        tree_processes.push(data);
+      } else if (create_type === "instrument_data"){
+        data["id"] = tree_instrument_data[tree_instrument_data.length-1].id+1;
+        tree_instrument_data.push(data);
+      }
+    }
+    // console.log(data);
 
-//     if(loclist.length == 0){
-//         newnode['loc'] = loc+tree.length;
-//         tree.push(newnode);
-//     } else if (loclist.length == 2){
-        
-//     } else if (loclist.length == 3){
-        
-//     } else if (loclist.length == 4) {
-        
-//     }
-//     console.log(newnode);
-//     refreshTree();
-//     closeSideBar();
-// }
+    buildTree();
+    showTree();
+}
 
-// // CRUD for Each Type
-// const CRUDS = [
-//     {
-//         type: 'plant',
-//         funcs:[
-//             {
-//                 CRUD: 'create',
-//                 topic: 'Create Flare',
-//                 createType: 'flare',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             }
-//         ]
-//     },
-//     {
-//         type: 'flare',
-//         funcs:[
-//             {
-//                 CRUD: 'create',
-//                 topic: 'Create Header',
-//                 createType: 'header',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             },
-//             {
-//                 CRUD: 'create',
-//                 topic: 'Create Instrument',
-//                 createType: 'instrument',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             },
-//             {
-//                 CRUD: 'delete',
-//                 topic: 'Delete Flare',
-//             },
-//             {
-//                 CRUD: 'update',
-//                 topic: 'Update Flare',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             }
-//         ]
-//     },
-//     {
-//         type: 'header',
-//         funcs:[
-//             {
-//                 CRUD: 'create',
-//                 topic: 'Create Instrument',
-//                 createType: 'instrument',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             },
-//             {
-//                 CRUD: 'create',
-//                 topic: 'Create Process',
-//                 createType: 'process',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             },
-//             {
-//                 CRUD: 'delete',
-//                 topic: 'Delete Header',
-//             },
-//             {
-//                 CRUD: 'update',
-//                 topic: 'Update Header',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             }
-//         ]
-//     },
-//     {
-//         type: 'instrument',
-//         funcs:[
-//             {
-//                 CRUD: 'create',
-//                 topic: 'Create Instrument Data',
-//                 createType: 'instrument data',
-//                 inputs: [
-//                     'PI tag'
-//                 ]
-//             },
-//             {
-//                 CRUD: 'delete',
-//                 topic: 'Delete Instrument',
-//             },
-//             {
-//                 CRUD: 'update',
-//                 topic: 'Update Instrument',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             }
-//         ]
-//     },
-//     {
-//         type: 'instrument data',
-//         funcs:[
-//             {
-//                 CRUD: 'delete',
-//                 topic: 'Delete PI Tag',
-//             },
-//             {
-//                 CRUD: 'update',
-//                 topic: 'Update PI Tag',
-//                 inputs: [
-//                     'PI Tag'
-//                 ]
-//             }
-//         ]
-//     },
-//     {
-//         type: 'process',
-//         funcs:[
-//             {
-//                 CRUD: 'delete',
-//                 topic: 'Delete Process',
-//             },
-//             {
-//                 CRUD: 'update',
-//                 topic: 'Update Process',
-//                 inputs: [
-//                     'name'
-//                 ]
-//             }
-//         ]
-//     },
-// ];
+// CRUD for Each Type
+const CRUDS = [
+    {
+        type: 'plant',
+        funcs:[
+            {
+                CRUD: 'create',
+                topic: 'Create Flare',
+                createType: 'flare',
+                inputs: [
+                    'name'
+                ]
+            }
+        ]
+    },
+    {
+        type: 'flare',
+        funcs:[
+            {
+                CRUD: 'create',
+                topic: 'Create Header',
+                createType: 'header',
+                inputs: [
+                    'name'
+                ]
+            },
+            {
+                CRUD: 'create',
+                topic: 'Create Instrument',
+                createType: 'instrument',
+                inputs: [
+                    'name'
+                ]
+            },
+            {
+                CRUD: 'delete',
+                topic: 'Delete Flare',
+            },
+            {
+                CRUD: 'update',
+                topic: 'Update Flare',
+                inputs: [
+                    'name'
+                ]
+            }
+        ]
+    },
+    {
+        type: 'header',
+        funcs:[
+            {
+                CRUD: 'create',
+                topic: 'Create Instrument',
+                createType: 'instrument',
+                inputs: [
+                    'name'
+                ]
+            },
+            {
+                CRUD: 'create',
+                topic: 'Create Process',
+                createType: 'process',
+                inputs: [
+                    'name'
+                ]
+            },
+            {
+                CRUD: 'delete',
+                topic: 'Delete Header',
+            },
+            {
+                CRUD: 'update',
+                topic: 'Update Header',
+                inputs: [
+                    'name'
+                ]
+            }
+        ]
+    },
+    {
+        type: 'instrument',
+        funcs:[
+            {
+                CRUD: 'create',
+                topic: 'Create Instrument Data',
+                createType: 'instrument data',
+                inputs: [
+                    'PI tag'
+                ]
+            },
+            {
+                CRUD: 'delete',
+                topic: 'Delete Instrument',
+            },
+            {
+                CRUD: 'update',
+                topic: 'Update Instrument',
+                inputs: [
+                    'name'
+                ]
+            }
+        ]
+    },
+    {
+        type: 'instrument_data',
+        funcs:[
+            {
+                CRUD: 'delete',
+                topic: 'Delete PI Tag',
+            },
+            {
+                CRUD: 'update',
+                topic: 'Update PI Tag',
+                inputs: [
+                    'PI Tag'
+                ]
+            }
+        ]
+    },
+    {
+        type: 'process',
+        funcs:[
+            {
+                CRUD: 'delete',
+                topic: 'Delete Process',
+            },
+            {
+                CRUD: 'update',
+                topic: 'Update Process',
+                inputs: [
+                    'name'
+                ]
+            }
+        ]
+    },
+];
