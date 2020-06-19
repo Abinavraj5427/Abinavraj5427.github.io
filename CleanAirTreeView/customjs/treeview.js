@@ -221,6 +221,7 @@ function showTree(){
 function displayData(data){
     // console.log(data);
     // Displays Data stored in Node
+    // READ
     var databox = document.getElementById("data");
     while (databox.firstChild) {
         databox.removeChild(databox.firstChild);
@@ -259,7 +260,8 @@ function displayData(data){
           var h4 = document.createElement("h5");
           h4.innerHTML = funcs[j].topic;
           databox.appendChild(h4);
-          //CREATE ONLY
+        
+          // CREATE ONLY
           let CRUD_TYPE = funcs[j].CRUD;
           if(CRUD_TYPE === "create"){
             var inputs = funcs[j].inputs;
@@ -284,116 +286,91 @@ function displayData(data){
             databox.appendChild(submit);
           }
 
+          // SHOW DELETE
+          else if(CRUD_TYPE === "delete"){
+            var submit = document.createElement("button");
+            submit.innerHTML = "DELETE";
+            submit.onclick = () => {
+              deleteNode(selected_type, data.id, data.parent_type);
+            }
+            databox.appendChild(submit);
+          }
+
         }
       }
-    }
-
-    
+    }   
 }
 
-// // Opens the Sidebar
-// function openSideBar(type, data){
-//     addSideBarElements(type, data, -1);
+// Deletes Nodes From Tree
+function deleteNode(type, remove, parent_type){
+  var map_type_to_list = {
+    flare: tree_flares,
+    header: tree_headers,
+    process: tree_processes,
+    instrument: tree_instruments,
+    instrument_data: tree_instrument_data
+  }
 
-//     document.getElementById("sidebar").style.width = "400px";
-//     document.getElementById("main").style.marginRight = "400px";
-// }
+  // Removing Node
+  var list = map_type_to_list[type];
+  for(let i = 0; i< list.length; i++){
+    var list_item = list[i];
+    if(remove === list_item.id && instrumentCheck(list_item.parent_type, parent_type)){
+      list.splice(i, 1);
+      i--;
+    }
+  }
+  var get_parent_id_key = {
+    flare: "flare_id",
+    header: "header_id",
+    instrument: "instrument_id",
+  }
 
-// // Closes the Sidebar
-// function closeSideBar(){
-//     document.getElementById("sidebar").style.width = "0";
-//     document.getElementById("main").style.marginRight = "0";
-// }
+  if(type === "process" || type === "instrument_data"){
+    buildTree();
+    showTree();
+    return;
+  }
 
-// // Adds Sidebar Elements
-// function addSideBarElements(type, data, select){
+  var next_type = {
+    flare: "header",
+    header: "process",
+    instrument: "instrument_data"
+  }
 
-//     console.log(data);
-//     // Clear Sidebar
-//     var bar= document.getElementById("sidebar_options");
-//     while (bar.firstChild) {
-//         bar.removeChild(bar.firstChild);
-//     }
-    
-//     // Searching for Selection
-//     for(let i = 0; i< CRUDS.length; i++){
+  // Finding Children to Remove
+  var next_type_id = get_parent_id_key[type];
+  list = map_type_to_list[next_type[type]];
+  parent_type = type;
+  for(let i = 0; i< list.length; i++){
+    var list_item = list[i];
+    if(remove === list_item[next_type_id] && instrumentCheck(list_item.parent_type, parent_type)){
+      deleteNode(next_type[type], list_item.id, parent_type);
+      i--;
+    }
+  }
+  if(type === "header" || type === "flare"){
+    next_type_id = "parent_id"
+    list = tree_instruments;
+    parent_type = type;
+    for(let i = 0; i< list.length; i++){
+      var list_item = list[i];
+      if(remove === list_item[next_type_id] && instrumentCheck(list_item.parent_type, parent_type)){
+        deleteNode("instrument", list_item.id, parent_type);
+        i--;
+      }
+    }
+  }
+  buildTree();
+  showTree();
+}
 
-//         if(CRUDS[i].type === type){
-
-//             // Adding Sidebar Links
-//             for(let j = 0; j< CRUDS[i].funcs.length; j++){
-//                 var a = document.createElement("a");
-//                 a.innerHTML = CRUDS[i].funcs[j].topic;
-//                 a.href = "javascript:void(0)";
-//                 a.onclick = (event) => {addSideBarElements(type, data, j); }
-//                 bar.appendChild(a);
-
-                
-//                 if(j===select || (select === -1 && j == CRUDS[i].funcs.length-1)){
-//                     var total_inputs = CRUDS[i].funcs[j].inputs? CRUDS[i].funcs[j].inputs.length: 0;
-
-//                     // Adding Inputs
-//                     for(let k = 0; k < total_inputs; k++){
-//                         var label = document.createElement('label');
-//                         label.innerHTML = CRUDS[i].funcs[j].inputs[k];
-
-//                         var input = document.createElement('input');
-//                         input.type = 'text';
-//                         input.id = CRUDS[i].funcs[j].inputs[k];
-//                         input.placeholder = 'blank';
-//                         if(CRUDS[i].funcs[j].CRUD === "update"){
-//                             // console.log(data);
-//                             input.value = data[CRUDS[i].funcs[j].inputs[k]];
-//                         }
-
-//                         var br = document.createElement("br");
-//                         bar.appendChild(label);
-//                         bar.appendChild(br);
-//                         bar.appendChild(input);
-                       
-//                     }
-
-//                     var br2 = document.createElement("br");
-//                     var submit = document.createElement("button");
-//                     if(CRUDS[i].funcs[j].CRUD === "update"){
-//                         submit.innerHTML = "UPDATE";
-//                         submit.onclick = () => {updateNode(data.loc)}
-//                     } 
-//                     else if (CRUDS[i].funcs[j].CRUD === "create"){
-//                         submit.innerHTML = "CREATE";
-//                         submit.onclick = () => {createNode(data ? data.loc: "", CRUDS[i].funcs[j].createType, CRUDS[i].funcs[j].inputs)}
-//                     }
-//                     else if (CRUDS[i].funcs[j].CRUD === "delete"){
-//                         submit.innerHTML = "DELETE";
-//                         submit.onclick = () => {deleteNode(data.loc)}
-//                     }
-//                     bar.appendChild(br2);
-//                     bar.appendChild(submit);
-//                 }
-//             }
-//             break;
-//         }
-//     }
-// }
-
-
-
-
-// // Deletes Nodes From Tree
-// function deleteNode(loc){
-//     loclist = loc.split('.');
-//     if(loclist.length == 1){
-//         tree.splice(loclist[0],1);
-//     } else if (loclist.length == 2){
-//         tree[loclist[0]].nodes.splice(loclist[1], 1);
-//     } else if (loclist.length == 3){
-//         tree[loclist[0]].nodes[loclist[1]].nodes.splice(loclist[2], 1);
-//     } else if (loclist.length == 4) {
-//         tree[loclist[0]].nodes[loclist[1]].nodes[loclist[2]].nodes.splice(loclist[3], 1);
-//     }
-//     refreshTree();
-//     closeSideBar();
-// }
+function instrumentCheck(parent1, parent2){
+  if(parent2 === undefined) return true;
+  if(parent1 === undefined) return true;
+  if(parent1 === parent2) return true;
+  return false;
+}
 
 // Adds Node To Tree
 function createNode(parent_type, parent_id, data, create_type){
