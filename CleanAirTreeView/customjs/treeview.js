@@ -264,10 +264,12 @@ function displayData(data){
           let CRUD_TYPE = funcs[j].CRUD;
           if(CRUD_TYPE === "create"){
             var inputs = funcs[j].inputs;
+            // console.log(inputs);
             for(let k = 0; k< inputs.length; k++){
               var input = document.createElement("input");
               input.placeholder = inputs[k];
               input.id = selected_type+"_"+data.id+"_"+inputs[k]+"_"+CRUD_TYPE+"_"+funcs[j].createType;
+              // console.log(input.id);
               databox.appendChild(input);
             }
             
@@ -275,8 +277,11 @@ function displayData(data){
             submit.innerHTML = "CREATE";
             submit.onclick = () => {
               let new_data = {}
+              inputs = funcs[j].inputs;
+              // console.log(inputs);
               for(let k = 0; k< inputs.length; k++){
                 var input_id = selected_type+"_"+data.id+"_"+inputs[k]+"_"+CRUD_TYPE+"_"+funcs[j].createType;
+                // console.log(input_id)
                 new_data[inputs[k]] = document.getElementById(input_id).value;
               }
 
@@ -396,37 +401,33 @@ function instrumentCheck(parent1, parent2){
 
 // Adds Node To Tree
 function createNode(parent_type, parent_id, data, create_type){
-    console.log(parent_type);
+    // console.log(create_type);
     var get_parent_id_key = {
       plant: "plant_id",
       flare: "flare_id",
       header: "header_id",
-      instrument_data: "instrument_id",
+      instrument: "instrument_id",
     }
+
+    var map_type_to_list = {
+      flare: tree_flares,
+      header: tree_headers,
+      process: tree_processes,
+      instrument: tree_instruments,
+      instrument_data: tree_instrument_data
+    }
+    var list = map_type_to_list[create_type];
 
     if(create_type === "instrument"){
       data["parent_id"] = parent_id;
       data["parent_type"] = parent_type;
       data["id"] = tree_instruments[tree_instruments.length-1].id+1;
-      data["nodes"] = [];
+      // data["nodes"] = [];
       tree_instruments.push(data);
     } else {
       data[get_parent_id_key[parent_type]] = parent_id;
-      if(create_type === "flare"){
-        data["id"] = tree_flares[tree_flares.length-1].id+1;
-        data["nodes"] = [];
-        tree_flares.push(data);
-      } else if (create_type === "header"){
-        data["id"] = tree_headers[tree_headers.length-1].id+1;
-        data["nodes"] = [];
-        tree_headers.push(data);
-      } else if (create_type === "process"){
-        data["id"] = tree_processes[tree_processes.length-1].id+1;
-        tree_processes.push(data);
-      } else if (create_type === "instrument_data"){
-        data["id"] = tree_instrument_data[tree_instrument_data.length-1].id+1;
-        tree_instrument_data.push(data);
-      }
+      data["id"] = list[list.length-1].id+1;
+      list.push(data);
     }
     buildTree();
     showTree();
@@ -550,9 +551,9 @@ const CRUDS = [
             {
                 CRUD: 'create',
                 topic: 'Create Instrument Data',
-                createType: 'instrument data',
+                createType: 'instrument_data',
                 inputs: [
-                    'PI tag'
+                    'pi_tag'
                 ]
             },
             {
