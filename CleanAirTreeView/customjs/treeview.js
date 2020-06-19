@@ -219,9 +219,8 @@ function showTree(){
 
 
 function displayData(data){
-    // console.log(data);
     // Displays Data stored in Node
-    // READ
+    // READ the NODE
     var databox = document.getElementById("data");
     while (databox.firstChild) {
         databox.removeChild(databox.firstChild);
@@ -261,7 +260,7 @@ function displayData(data){
           h4.innerHTML = funcs[j].topic;
           databox.appendChild(h4);
         
-          // CREATE ONLY
+          // CREATE NODE
           let CRUD_TYPE = funcs[j].CRUD;
           if(CRUD_TYPE === "create"){
             var inputs = funcs[j].inputs;
@@ -286,12 +285,35 @@ function displayData(data){
             databox.appendChild(submit);
           }
 
-          // SHOW DELETE
+          // DELETE NODE
           else if(CRUD_TYPE === "delete"){
             var submit = document.createElement("button");
             submit.innerHTML = "DELETE";
             submit.onclick = () => {
               deleteNode(selected_type, data.id, data.parent_type);
+            }
+            databox.appendChild(submit);
+          }
+
+          else if(CRUD_TYPE === "update"){
+            var inputs = funcs[j].inputs;
+            for(let k = 0; k< inputs.length; k++){
+              var input = document.createElement("input");
+              input.placeholder = inputs[k];
+              input.value = data[inputs[k]];
+              input.id = selected_type+"_"+data.id+"_"+inputs[k]+"_"+CRUD_TYPE+"_"+funcs[j].createType;
+              databox.appendChild(input);
+            }
+            
+            var submit = document.createElement("button");
+            submit.innerHTML = "UPDATE";
+            submit.onclick = () => {
+              let new_data = {}
+              for(let k = 0; k< inputs.length; k++){
+                var input_id = selected_type+"_"+data.id+"_"+inputs[k]+"_"+CRUD_TYPE+"_"+funcs[j].createType;
+                new_data[inputs[k]] = document.getElementById(input_id).value;
+              }
+              updateNode(selected_type, data.id, new_data, data.parent_type);
             }
             databox.appendChild(submit);
           }
@@ -392,7 +414,6 @@ function createNode(parent_type, parent_id, data, create_type){
       data[get_parent_id_key[parent_type]] = parent_id;
       if(create_type === "flare"){
         data["id"] = tree_flares[tree_flares.length-1].id+1;
-        // console.log(tree_flares[tree_flares.length-1].id+1)
         data["nodes"] = [];
         tree_flares.push(data);
       } else if (create_type === "header"){
@@ -407,10 +428,41 @@ function createNode(parent_type, parent_id, data, create_type){
         tree_instrument_data.push(data);
       }
     }
-    // console.log(data);
-
     buildTree();
     showTree();
+}
+
+// Update Node
+function updateNode(type, id, data, parent_type){
+  var map_type_to_list = {
+    flare: tree_flares,
+    header: tree_headers,
+    process: tree_processes,
+    instrument: tree_instruments,
+    instrument_data: tree_instrument_data
+  }
+  var list = map_type_to_list[type];
+  var map_type_to_parent = {
+    flare: "plant_id",
+    header: "flare_id",
+    process: "header_id",
+    instrument_data: "instrument_id",
+    instrument: "parent_id"
+  }
+  var parent_id_key = map_type_to_parent[type];
+  for(let i = 0; i< list.length; i++){
+    if(list[i].id === id){
+      data[parent_id_key] = list[i][parent_id_key];
+      data["id"] = id;
+      if(type === "instrument"){
+        data["parent_type"] = parent_type;
+      }
+      list[i] = data;
+      break;
+    }
+  }
+  buildTree();
+  showTree();
 }
 
 // CRUD for Each Type
@@ -527,7 +579,7 @@ const CRUDS = [
                 CRUD: 'update',
                 topic: 'Update PI Tag',
                 inputs: [
-                    'PI Tag'
+                    'pi_tag'
                 ]
             }
         ]
