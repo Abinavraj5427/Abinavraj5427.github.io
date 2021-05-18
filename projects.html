@@ -234,4 +234,13 @@
 
         </div>
     </body>
+    <footer>
+        <script>
+            function scream() {alert("Link is not ready yet.")}
+            var e = document.getElementsByClassName("ulink");
+            for(let i = 0; i < e.length; i++){
+                e[i].onclick = scream;
+            }
+        </script>
+    </footer>
 </html>
