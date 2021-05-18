@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "../css/styles.css"/>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "../index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "../projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div class = "content">
+            <div class = "row-text">
+                <h2>Dokanda</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Br0RkltZIeI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class = "description">
+                    <h2 id="dokanda">dokanda</h2>
+                    <p>Maintaining our health is a primary goal in many of our lives, yet sometimes, we just don&#39;t have the means to do so. Whether it is due to high expenses or low accessibility, such circumstances aren&#39;t fair to those who want to preserve their wellbeing.</p>
+                    <p>In times such as these, where COVID-19 interrupts our daily lives with no foreseeable end, it is important now more than ever to preserve our health and wellbeing in any way that we can. Students and adults have already transferred their work over to remote communication, so wouldn&#39;t it only make sense to do the same for all aspects of life?</p>
+                    <p>Good thing there is a viable and inexpensive way to now achieve this for our personal health: <strong>dokanda</strong>.</p>
+                    <p>Dokanda is a easy to use mobile responsive web app which allows for doctors and patients to meet one on one in video calls with a <strong>real-time</strong> chat room for diagnoses or questions. Along with this, dokanda features a self-diagnostic page based on symptoms, enabling users to get information <strong>instantly</strong>.</p>
+                    <h2 id="inspiration">Inspiration</h2>
+                    <p>Parts of Indonesia are rampant with poverty and diseases but still deal with a lack of access to medical services. With the ability to improve life with technology, we seek to play our part to support health care workers on the front lines.</p>
+                    <p>Providing easy access to the ever-changing healthcare system is one of our primary goals, as not only is our technology easy to use, but is also tailored specifically for doctors to speed up their diagnostic process.</p>
+                    <p>Even though not all of us are medical professionals, we have access to the internet which hosts a ton of useful information regarding personal health. That said, the biggest issue about this is finding reliable information, which is now not an issue, since dokanda does the <strong>heavy lifting</strong> for you!</p>
+                    <h3 id="common-health-healthcare-problems-in-indonesia">Common Health/Healthcare Problems in Indonesia</h3>
+                    <h4 id="overcrowding">Overcrowding</h4>
+                    <p>Many of the hospitals across Indonesia are centralized in populous areas such as Jakarta. With the lower amounts of hospitals compared to other countries, getting healthcare is one of the toughest jobs in the regions. Even during modern times with COVID 19 around, many of the hospitals are having trouble maintaining large amounts of people. With overcrowding in many of these hospitals, hospitals have become much more unsanitary in Indonesia which is an important health concern.</p>
+                    <p>That&#39;s where dokanda comes in. Dokanda is there for you wherever you are and whenever you want. We try to stop your health doubts and issues before relying on a hospital. With dokanda, we can prevent you from having to go to such crowded and maybe unsanitary places with potential health risks.</p>
+                    <h4 id="accessibility">Accessibility</h4>
+                    <p>Hospitals in Indonesia are very limited on resources. As a result, they are mainly located in the most populous areas such as Jakarta. Remote regions of Indonesia find it difficult to find public health care. Even with remote health care, aid can get quite expensive. The Indonesian government has been funding  Indonesia is very vast and we find it necessary that the entire country gets access to the best and most convenient healthcare possible.</p>
+                    <p>Therefore, dokanda is here to be accessible entirely online. If there&#39;s ever a prescription sent by a doctor, doctors can send prescription details remotely from a remote location to your convenient/preferred location all with the click of a button.</p>
+                    <h4 id="literacy">Literacy</h4>
+                    <p>One of the major problems seen across Indonesia is the low literacy rates. Compared to Malaysia, Singapre, Thailand, and other neighboring southeast Asian countries, Indonesia is known to have the lowest. This makes communication especially harder for foreigners within the country. Additionally, one of the largest skills that many healthcare companies and private hospitals advertise to their clients is English compatibility. This, however, puts more strain on the Indonesian job force while somewhat helping patients.</p>
+                    <p>Dokanda revolutionizes the med tech industry because it takes language barrier into account. It automatically converts English into Indonesia if asked.</p>
+                    <h2 id="how-we-built-it">How we built it</h2>
+                    <img src="https://github.com/RadioactiveArrow/dokanda/blob/master/public/workflow.png?raw=true">
+                    <p><strong>Express.js &amp; Node.JS</strong> - We utilized express as our server server side framework in order to make API calls and manage requests to our API. Node.js was used to construct our API and execute queries to our database.</p>
+                    <p><strong>Socket.IO &amp; WebRTC</strong> - In order to enable real-time communication for both the video and chat rooms, we used a socket architecture to handle the relation between doctors and patients in a chatroom. We also used peer.js to connect each individual to a local server.</p>
+                    <p><strong>React.JS</strong> - We used react.js to create our frontend and structure our content in a dynamic way. We found this to be incredibly efficient when having multiple moving parts such as text in a chatroom or videos that need to be added or removed from a room.</p>
+                    <p><strong>Python</strong> - To retrieve diseases and their respective symptoms, we utilized webscraping in python using the beautiful soup library. This automation saved us a ton of time as manually retrieving the information would&#39;ve been too tedious and time-consuming.</p>
+                    <p><strong>PostgreSQL</strong> - This was our first time using PostgreSQL, but we found it to be the perfect database structure for our needs, as we needed a solid and defined structure but more a larger list of data types compared to vanilla SQL. Heroku provides PostgreSQL as a cloud service, and we communicated with it using pyscopg2 in python and pg in node.js.</p>
+                    <h2 id="challenges-we-ran-into">Challenges we ran into</h2>
+                    <p><h3>Socket.IO and Peer Communication</h3>
+                    Using a socket-based architecture with peer connections proved to be difficult to manage, especially on the video side. This was our first time using the technology, which meant we had to learn on the go. We ran into issues with sending broadcasts from the server back to the client, and with managing react states from inteferering with the live video chat.</p>
+                    <p><h3>Captcha While Webscraping</h3>
+                    Due to the fact that we had to web scrape hundreds of diseases and their symptoms, google&#39;s captcha system stopped us from executing all the searches in one go. Instead, we had to bypass this issue by adding time intervals to our code using a sleep function, to avoid sending a high amount of traffic in a short time span. This was time-consuming since intervals had to be a few seconds each, which added up in the long run. This also meant that we had to store our data simultaneously as we web scraped to avoid losing information in case the captcha blocked us.</p>
+                    <p><h3>Site Wide Translation</h3>
+                    Our web app provides the ability to change language at any time, which means all our content has to be dynamically added based on the current selected language. This includes all frontend text, meaning that it has to be passed through a translation function. Even though this directly isn&#39;t an issue, it creates lots of dependencies between files, which can be difficult to work with.</p>
+                    <h2 id="accomplishments-that-we-re-proud-of">Accomplishments that we&#39;re proud of</h2>
+                    <p><h3>1. Live Video and Chat Room</h3>
+                    Using sockets was quite difficult but we managed to figure out the communication and got a fully functioning live video stream of both the doctor and patient on the screen with little to no latency. Sending users and doctors to a single room is completely automated and requires the users to do minimal work on their end. </p>
+                    <p><h3>2. Reliable Information and Data</h3>
+                    The information we deliver to users on the self-diagnostic tool is clean and concise, which makes it easy to use. The data was web scraped from reliable sources, making the data credible and easy to understand. The data we scrape is also stored in a database, which means it is a one-time thing, allowing our web app to be free of major dependencies.</p>
+                    <p><h3>3. Clean User Interface</h3>
+                    Even though we had to integrate many technologies, we ended up with a clean and simplistic UI which makes the web app easy to use. Medical information is already confusing enough, so no need to be confused on how to navigate or use the web app.</p>
+                    <h2 id="what-we-learned">What we learned</h2>
+                    <p><h3>Peer Communication</h3>
+                    This was the first time that any of us used socket-based communication so it was a nice learning experience. We learned the optimal ways to communicate from the client to the server and vice versa, along with linking users together for socket communication using rooms.</p>
+                    <p><h3>Dynamic Rendering</h3>
+                    Having the web app be dynamically rendered allowed for us to easily change between languages based on user selection. It also forced us to have clean and organized code since files were heavily dependent on one another for receiving information. It also taught us to be careful with states since it initially caused conflicts with our socket communication.</p>
+                    <h2 id="what-s-next-for-dokanda">What&#39;s next for dokanda</h2>
+                    <p><h3>Medical Records with Encryption</h3>
+                    We want the patients and doctors to have easy access to any records. If there is ever a necessity, the files are safely stored online with 256 bit encryption on the MEGA cloud service. Doctors can only access the files with the patient&#39;s permission.</p>
+                    <p><h3>Medical Authorization Requests From Doctor to Patient</h3>
+                    Safety and comfort are our number one priorities. We want the patient to feel they are in control of the application. If they feel uncomfortable, they may leave the call, cancel their video, reschedule their appointment, and much more. Furthermore the doctor is required to send authorization requests to get access to more sensitive features such as body examinations, special documents, and other information.</p>
+                    <p><h3>Medical Form Fill out Service</h3>
+                    To speed up the process and consult with more patients, a form fill option will be added. Patients can electronically fill out forms before hand, so they can be ready, decreasing the time it takes for an appointment. This can also be used for patients to give the doctor an idea of the issue beforehand so the doctor can come prepared with the right advice/ treatments.</p>
+                    <p><h3>Appointment/Call History and Thread</h3>
+                    Every time an appointment is made a new thread is made. In this thread you have chat history and call history as well as documents that you can always visit or continue if an issue or condition persists.</p>
+                    <p><h3>Electronic Prescriptions</h3>
+                    Doctors can prescribe medicine for the patients through the app and submit it to their default pharmacy. This should ease the flow for patients who are unsure of the medical process.</p>
+                    <h3 id="login-info">LOGIN INFO</h3>
+                    <h4 id="patient">patient</h4>
+                    <p>username: a@amail.com
+                    password: a</p>
+                    <h4 id="doctor">doctor</h4>
+                    <p>username: doctor@doctor.com
+                    password: doc</p>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

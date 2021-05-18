@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "../css/styles.css"/>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "../index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "../projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div class = "content">
+            <div class = "row-text">
+                <h2>Blast</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/V3eJDwwzwCI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class = "description">
+                    <h2 id="inspiration">Inspiration</h2>
+                    <p>Do you remember George Floyd&#39;s death? Do you remember how responsive the nation was with #BlackLivesMatter on social media?</p>
+                    <p>There you go... one of the largest ways to make an impact in this modern world: social media. Social media is extremely powerful in spreading messages about social justice around the world. But how could we take this service to the next level?</p>
+                    <p>Think about it. Imagine a more politically active populous. Imagine a world full of much more passionate and responsive people, cognizant of themselves and the people around them. </p>
+                    <p>We live in a turbulent world, and it&#39;s more important than ever before that we make our voices heard to the entire globe. </p>
+                    <p>Social media is evolving, and more people are using their social media platforms platforms to spread news and calls to action. Writing posts and switching between platforms can be cumbersome. Additionally, not all social media websites provide efficient, organized, and comprehensive feedback on the reach of your posts. </p>
+                    <p>Help us <strong>promote</strong> social justice by helping creators and influencers spread their voices. </p>
+                    <p>Wait... no... help us <strong>blast their voices</strong>!</p>
+                    <h2 id="what-it-does">What it does</h2>
+                    <p>Blast offers a unified interface for making synchronous posts to multiple social media websites. Blast logs in on your behalf and submits your content <strong>across all your platforms</strong> in seconds. </p>
+                    <p>On a separate tab, Blast keeps a record of all of your posts. You can browse through and <strong>find core analytics</strong> about the audience and popularity your posts have reached. </p>
+                    <p>Why do we want analytics? </p>
+                    <p>Think about this. You want to make a post about the recent income inequality gap that you want to reduce. But how do you know who is and isn&#39;t taking action. How do you know which friends responded and which friends did not? How do you know if you could&#39;ve <strong>blasted</strong> better?</p>
+                    <p>Exactly, we use analytics to make your <strong>blast</strong> much more impactful.</p>
+                    <p>Blast supports Reddit, Twitter, and LinkedIn currently.</p>
+                    <h2 id="how-we-built-it">How we built it</h2>
+                    <p><img src="https://github.com/Abinavraj5427/blast/blob/master/public/assets/architecture.png?raw=true">)</p>
+                    <h4 id="the-frontend">The Frontend</h4>
+                    <p>The frontend was entirely built with html, css, and javascript. We created live animations purely with css. We also incorporated a library, chart.js for displaying our analytics. We developed all our pages to be static. The frontend communicates with both Firebase and the Flask API. The frontend updates dynamically to changes requested in the backend. The front end is also made to be mobile responsive with the use of media queries.</p>
+                    <h4 id="the-backend">The Backend</h4>
+                    <p>The backend was constructed with a combination of Firebase and Python. For the Firebase, we conduct authentication for users. We also use it as our database for the users and their specific credentials and data. Firebase firestore is a No-SQL database which we used to save unstructured data. We also use Flask as part of our backend api. The reasons we have this Flask API is because we want to get live data from different user posts. We do this with Selenium, a python library. Python was our choice for webscraping tweets and posts. This was mainly because of libraries such as Beautiful-Soup. This was also the language of commonality in our team which made this an effective choice.</p>
+                    <h2 id="challenges-we-ran-into">Challenges we ran into</h2>
+                    <p>We had to get resourceful in establishing data communication with Facebook and Instagram. Literally, Instagram wanted images, but Selenium was mainly text-based. Uploading from a file system with selenium is a yucky mess. We hope to incorporate this in the future to allow for Instagram integration.</p>
+                    <p>We had some trouble getting into Facebook with our data extractors! Facebook kept shutting down our test accounts. We tried to make alternate accounts, but somehow, Facebook kept tracking us. How do they have all this data? The world will never know...</p>
+                    <p>Twitter has a very long documentation. Who wants to read long confusing documentation? Just get straight to the point. Give us what we want so we can get our project done. Twitter, why?</p>
+                    <p>Finally, ChromeDriver takes longer than we&#39;d hope to handle data requests.</p>
+                    <h2 id="accomplishments-that-we-re-proud-of">Accomplishments that we&#39;re proud of</h2>
+                    <p>We are proud of being able to incorporate three different platforms within our project: Twitter, Reddit, and LinkedIn within our given timeframe. We were originally planning on sticking with only one platform, but due to our high efficiency of teamwork and constant communication, we were able to get a huge amount of work done. </p>
+                    <p>We are also proud of the user interface that we have created. The color scheme to the animations to the charts.... everything was phenomenally designed. In fact, the animations created more interactivity to the page. We also made sure the pages were mobile-responsive which indicates that the website could be used on both a phone, tablets, or even a laptop. We are proud that we were able to get a materialistic design that would help users easily adjust to the platform.</p>
+                    <h2 id="what-we-learned">What we learned</h2>
+                    <p>We gained in experience using social media APIs as well as selenium and data scraping. We increased our skills with JavaScript, website creation, Python, and HTML. We gained experience working with large codebases and unfamiliar libraries. </p>
+                    <h2 id="what-s-next-for-blast">What&#39;s next for blast</h2>
+                    <p>We would like to expand the analytics we provide to users and expand on the currently supported social media platforms, including Facebook and Instagram. We would also like to increase the speed and efficiency of our website.</p>
+                    <p>We would also like to add categories of social justice events/actions, such as #BlackLivesMatter or LGBTQ rights, so there could be more awareness toward these movements.</p>
+                    <p>Finally, we would also like to add the functionality of sending images/fliers across for Instagram. Infographics are very powerful in the case of spreading messages.</p>
+                    <h2 id="how-to-run-the-project">How to run the project</h2>
+                    <p>Note: project is not hosted anywhere, so local setup is required.</p>
+                    <h4 id="step-1-download-the-latest-version-of-chromedriver-corresponding-to-your-installed-version-of-google-chrome-">Step 1: Download the latest version of ChromeDriver corresponding to your installed version of Google Chrome.</h4>
+                    <h4 id="step-2-update-python-directories-for-path-variable-for-chrome-driver-modify-">Step 2: Update python directories for <code>PATH</code> variable for Chrome Driver. Modify:</h4>
+                    <p>linkedin_post.py;
+                    login_post_reddit.py;
+                    post_reddit.py;
+                    reddit_post_data.py;
+                    reddit_post_link.py;
+                    twitter_api.py;
+                    twitter_post.py;
+                    twitter_post_data.py;</p>
+                    <h4 id="step-3-run-python-server-py-to-start-the-api-">Step 3: Run: <code>python server.py</code> to start the API.</h4>
+                    <h4 id="step-4-open-index-html-">Step 4: Open index.html.</h4>
+                    <h4 id="step-5-create-new-user-">Step 5: Create new user!</h4>
+                    <h4 id="step-6-log-into-social-media-networks-inside-blast-">Step 6: Log into social media networks inside blast.</h4>
+                    <h3 id="step-7-blast-your-voice-">STEP 7: BLAST YOUR VOICE!</h3>
+                    e used React.js for the front end, and Node.js, Express.js, and MongoDB for the back end.</p>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

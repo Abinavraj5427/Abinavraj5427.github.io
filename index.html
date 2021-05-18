@@ -1,30 +1,212 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "./css/styles.css"/>
 
-<head>
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155281959-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    </head>
 
-        gtag('config', 'UA-155281959-1');
-    </script>
-</head>
+    <body>
 
-<body>
-    <div class = "heading">
-        <div class="page-title">ABINAVRAJ</div>
-        <div class="page-title">GANESH SUDHAKAR</div>
-        <div class="page-subtitle">WEBSITES | APPS | ROBOTS & IOT | AI</div>
-    </div>
-    <div class = "topnav">
-            <a href = "index.html">Home</a>
-            <a href = "about.html">About</a>
-            <a href = "projects.html">Projects</a>
-            <a href = "experience.html">Experience</a>
+        <!-- Banner -->
+        <div id = "banner">
+            <video id = "banner-vid" autoplay loop muted>
+                <source src = "media/personalreel.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-</body>
 
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "./index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "./projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div id = "banner-overlay">
+            <h2>INNOVATOR</h2>
+            <h2>LEADER</h2>
+            <h2>CREATOR</h2>
+            
+            <a class = "action-btn" href = "./media/Resume 5-11-2021.pdf" download><h4>Resume</h4></a>
+        </div>
+
+        <div class="video-layer"></div>
+
+        <div class = "content">
+            <h2 id = "about-title">About Abinavraj</h2>
+
+            <!-- Tiles -->
+            <div class = "tile-row">
+                
+                <a class = "tile-link">
+                    <div class = "tile tile-3">
+                        <img src = "media/engineer.jpg"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>ENGINEER</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-3">
+                        <img src = "media/speaker.PNG"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>SPEAKER</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-3">
+                        <img src = "media/bsa.PNG"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>LEADER</h3>
+                    </div>
+                </a>
+    <!-- 
+                <a class = "tile-link">
+                    <div class = "tile">
+                        <img src = "media/engineer.jpg"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>ARTIST</h3>
+                    </div>
+                </a> -->
+                
+            </div>
+
+
+            <!-- About -->
+            <div class = "row-text">
+                <h2>Hi I'm Abinavraj. Nice to meet you.</h2>
+                
+                <div class = "description">
+                    <p>I am a software developer, digital marketing enthusiast, and ambitious influencer with multiple experiences in using technology such as the <strong>cloud, websites, robotics, apps, machine learning and even IoT</strong>. I am also the founder of a UT Austin organization Advancing Campus Technology a tech-consulting organization that solves problems around the UT Campus.
+                    <br>
+                    <br>
+                    Finally, I am both a Computer Science and Math major at UT Austin. I have goals in both academia and industry. In the future, I plan to work in the robotics industry or robotics academia.
+                    <br>
+                    <br>
+                    Please reach out to me if you want to work together, just chat for fun, or want me to create something for you! 
+                    </p>
+                    <br>
+                    <br>
+                    <a class = "action-btn" target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/">LinkedIn</a>
+                    <a class = "action-btn" target = "_blank" href = "https://github.com/Abinavraj5427">GitHub</a>
+                    <a class = "action-btn" href = "./media/Resume 5-11-2021.pdf" download>Resume</a>
+                </div>
+
+                
+            </div>
+
+            <!-- Info Rows -->
+            <h2>Work Experience</h2>
+            <div class = "tile-row">
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/heb.png"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>H-E-B</h3>
+                        <h3>2021</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <!-- <img src = "media/speaker.PNG"/> -->
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>Kreeda</h3>
+                        <h3>2020</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/upwork.png"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>Upwork</h3>
+                        <h3>2020</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/hpelogoslant.jpg"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>Hewlett Packard Enterprise</h3>
+                        <h3>2018</h3>
+                    </div>
+                </a>
+                
+            </div>
+
+
+            <!-- Info Rows -->
+            <h2>Research</h2>
+
+            <!-- Tiles -->
+            
+            <div class = "tile-row">
+
+                <a class = "tile-link">
+                    <div class = "tile tile-2">
+                        <img src = "media/rplpic.PNG"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>Robotic Perception Lab</h3>
+                        <h3>2021</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-2">
+                        <img src = "media/sleephackerpres2.jpg"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>CBL Sleep Hacker</h3>
+                        <h3>2018-2019</h3>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Info Rows -->
+            <h2>Education</h2>
+
+            <!-- Tiles -->
+            
+            <div class = "tile-row">
+                <a class = "tile-link">
+                    <div class = "tile tile-1">
+                        <img src = "media/utpic2.jpg"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>UT Austin</h3>
+                        <h3>2020-2024</h3>
+                    </div>
+                </a>
+            </div>
+            
+            
+
+        </div>
+
+    </body>
+
+    <footer></footer>
 </html>

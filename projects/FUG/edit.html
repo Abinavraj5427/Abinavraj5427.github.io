@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>FakeUrGram</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="editPage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="picture_edit.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <style>
+        .image-preview{
+            width: 300px;
+            min-height: 100px;
+            border:2px solid #dddddd
+            margin-top= 15px;
+
+            display: flex;
+            align-items:center;
+            justify-content: center;
+            font-weight:bold ;
+            color:#cccccc ;
+        }
+
+        .image-preview__image{
+            display: none;
+            width: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+   
+    <input type="text" value="Hello World" id="myInput">
+
+    <div class="open">
+        <div class="layer"></div>
+        <div class="layer"></div>
+    </div>
+    <div class="background">
+        <div class="triangle"></div>
+        <div class="background-text">
+            <h1>EDIT</h1>
+        </div>
+        <div class="background-red"></div>
+    </div>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg mt-4">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Go Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="edit.html">Create Your Gram</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About The Application</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="upfileoo.html">Edit Your Own Picture</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--Main Section-->
+    <main class="container main">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12">
+                <div class="maintext text-white">
+                   <div class="mainDiv" id = "imghldr" align="center">
+                        <img id = "theimg" height = "400px" width = "400px"src ="./0c6314e2dc9b5ad64fe861498f50e3.png"/>
+                        <br/>
+                        <br/>
+                     <input type = "submit" value = "Generate new image" onclick = "getLandscape()"/>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="./ajax.js"></script>
+    <script src="picture_edit.js"></script>
+    <script src="fileup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+         var firebaseConfig = {
+                apiKey: "AIzaSyAh27DKD7ivWFJoYP3aMuI2c_TGLHoPM3Q",
+                authDomain: "fakeurgrams-3434.firebaseapp.com",
+                databaseURL: "https://fakeurgrams-3434.firebaseio.com/",
+                projectId: "fakeurgrams-3434",
+                storageBucket: "fakeurgrams-3434.appspot.com",
+                messagingSenderId: "472083761447",
+                appId: "1:472083761447:web:7e5ec35d0cf0d1ae844102",
+                measurementId: "G-XK5C5Y6JLZ"
+            };
+            firebase.initializeApp(firebaseConfig);
+        const previewContainer = document.getElementById("imagePreview")
+        const previewImage = previewContainer.querySelector(".image-preview__image")
+        const previewDefaultText = previewContainer.querySelector(".image-preview__default-text")
+
+       
+            var storage = firebase.storage();
+            var imgRef = storage.ref('img/')
+            var uploader = document.getElementById('uploader');
+            var fileButton = document.getElementById('fileButton');
+         
+
+
+            fileButton.addEventListener('change', function (e) {
+                var file = e.target.files[0];
+                var storageRef = firebase.storage().ref('img/' + file.name);
+                var task = storageRef.put(file);
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    previewDefaultText.style.display="none"
+                    previewImage.style.display="block"
+
+                    reader.addEventListener("load",function(){
+                        console.log(this)
+                        previewImage.setAttribute("src",this.result)
+                    })
+                    reader.readAsDataURL(file)
+                }
+                task.on('state_changed', function progress(snapshot) {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                }, function error(err) {
+                }, function complete() {
+
+                });
+            });  
+
+    </script>
+</body>
+
+
+</html>

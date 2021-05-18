@@ -1,98 +1,237 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "./css/styles.css"/>
 
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155281959-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    </head>
+    <body>
 
-        gtag('config', 'UA-155281959-1');
-    </script>
-</head>
-
-<body>
-    <div>
-        <div class = "page-title">PROJECTS</div>
-        <br/>
-        <!--<a href = "https://www.github.com/Abinavraj5427"><img src= "images/githublogo5.jpg"/></a>-->
-        
-        <div class = "row">
-            <div class = "column">
-                <div class="card">
-                    <img src="./images/othscmsweblogin.PNG" alt="Avatar" style="width:100%">
-                    <div class="card-container">
-                    <h4><b>OTHS Contest Management System</b></h4>
-                    <p>ReactJS, PHP, HTML, CSS, SQL</p>
-                    </div>
-                </div>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "./index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
             </div>
-            <div class = "column">
-                <div class="card">
-                    <img src="./images/steelscouthome.png" alt="Avatar" style="width:100%">
-                    <div class="card-container">
-                    <h4><b>FRC Team 5427 Scouting Mobile App</b></h4>
-                    <p>ReactNative & Firebase</p>
-                    </div>
-                </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "./projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
             </div>
         </div>
 
-        <div class = "row">
-                <div class = "column">
-                    <div class="card">
-                        <img src="./images/FontANNLossCurve.PNG" alt="Avatar" style="width:100%">
-                        <div class="card-container">
-                        <h4><b>Website Font Color Contrast Classification Network</b></h4>
-                        <p>Python, HTML, CSS, JS, JQuery, PHP</p>
-                        </div>
+        <div class = "content">
+            <h2><br>My Work and Projects</h2>
+
+            <!-- Tiles -->
+            <div class = "tile-row">
+                
+                <a class = "tile-link" href = "./projects/robocop.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/fpgarobocop.jpg"/>
                     </div>
-                </div>
-                <div class = "column">
-                    <div class="card">
-                        <img src="./images/sleephackerclock.png" alt="Avatar" style="width:100%">
-                        <div class="card-container">
-                        <h4><b>Sleep Hacker Mobile App</b></h4>
-                        <p>ReactNative & Amazon AWS</p>
-                        </div>
+                    <div class = "tile-overlay">
+                        <h3>FPGA-RoboCop</h3>
                     </div>
-                </div>
+                </a>
+
+                <a class = "tile-link" href = "./projects/robotrl.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/rplpic.PNG"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>Robot-RL</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "./projects/chromera.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/chromera.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>Chromera</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "./projects/edfusion.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/edfusion.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>Edfusion</h3>
+                    </div>
+                </a>
+                
             </div>
 
-            <div class = "row">
-                    <div class = "column">
-                        <div class="card">
-                            <img src="./images/SciolyFossilBot.PNG" alt="Avatar" style="width:100%">
-                            <div class="card-container">
-                            <h4><b>Discord Scioly Fossil Bot</b></h4>
-                            <p>NodeJS</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "column">
-                        <div class="card">
-                            <img src="./images/arduinorobotarm.jpg" alt="Avatar" style="width:100%">
-                            <div class="card-container">
-                            <h4><b>Arduino Robot Arm</b></h4>
-                            <p>C++ using Arduino IDE</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-        
-    </div>
-    <div class = "topnav">
-            <a href = "index.html">Home</a>
-            <a href = "about.html">About</a>
-            <a href = "projects.html">Projects</a>
-            <a href = "experience.html">Experience</a>
+            <!-- Tiles -->
+            <div class = "tile-row">
+                
+                <a class = "tile-link" href = "./projects/straightbody.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/straightbody.jpg"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>Straight Body</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "./projects/act.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/actweb.PNG"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>ACT Website</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "./projects/rapidocs.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/rapidocs.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>rapidocs</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "./projects/dokanda.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/dokanda.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>dokanda</h3>
+                    </div>
+                </a>
+                
+            </div>
+
+            <!-- Tiles -->
+            <div class = "tile-row">
+                
+                <a class = "tile-link" href = "projects/blast.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/blast.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>blast</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "projects/d4m.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/d4m.PNG"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>draw4Med Website</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "projects/fug.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/fug.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>Fake Ur Gram</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "projects/simplague.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/simplague.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>simplague</h3>
+                    </div>
+                </a>
+                
+            </div>
+
+            <!-- Tiles -->
+            <div class = "tile-row">
+                
+                <a class = "tile-link" href ="projects/ecohub.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/ecohub.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>ecohub</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/othscmsweblogin.png"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>OTHS CMS Web</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link" href = "projects/thecookingbot.html">
+                    <div class = "tile tile-4">
+                        <img src = "media/thecookingbot.png"/>
+                    </div>
+                    <div class = "tile-overlay">
+                        <h3>thecookingbot</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/FontANNLossCurve.PNG"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>App Installation ANN</h3>
+                    </div>
+                </a>
+                
+            </div>
+
+            <!-- Tiles -->
+            <div class = "tile-row">
+                
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/SciolyFossilBot.PNG"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>Fossil Bot</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/frc.jpg"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>FRC 5427</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/FontANNLossCurve.PNG"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>Font Color ANN</h3>
+                    </div>
+                </a>
+
+                <a class = "tile-link">
+                    <div class = "tile tile-4">
+                        <img src = "media/sleephackerclock.png"/>
+                    </div>
+                    <div class = "ulink tile-overlay">
+                        <h3>Sleep Hacker</h3>
+                    </div>
+                </a>
+                
+            </div>
+
         </div>
-
-</body>
-
+    </body>
 </html>

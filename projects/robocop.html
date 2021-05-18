@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "../css/styles.css"/>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "../index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "../projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div class = "content">
+            <div class = "row-text">
+                <h2>FPGA-RoboCop</h2>
+
+                <div class = "description">
+                    <h1 id="fpga-robocop">FPGA - RoboCop</h1>
+
+                        <p>
+                        To run the assembler, use "python src.s dest.hex" for an output. To run the verilog program
+                        on an FPGA, an altera cyclone 10 is required. Then after bootloading the Arduino vidor chip,
+                        we were able to upload a bit stream using Quartus Prime.
+                    </p>
+                        <h3>* What did you plan on doing? </h3>
+                        <p>
+                        We were planning to make a robot with a custom architecture to control PWM, real-time data,
+                        use SDRAM, control motors, assembler, multithreading and maybe PID with floating point.
+                    </p>
+                        <h3>* What did you end up doing? </h3>
+                        <p>
+                        We ended up doing PWM, building a pipelined CPU, building an HBridge, using embedded memory blocks,
+                        controlling LEDS and motors, messing with PLL, figuring out how to run/use quartus prime, reading
+                        so much documentation, and building our hardware.
+                    </p>
+                        <h3>* What did you learn?</h3>
+                        <p>
+                        I learned how complicated SDRAM was and how it worked with respect to its steps, delays, and state machine for
+                        memory controllers. I also learned how System PLL worked for controlling frequency. I learned how to use an 
+                        FPGA and the differences in Verilog structure and code. We had to figure out the pins communication and how
+                        to read schematics. Finally, we learned a lot of circuitry/physics along with how to build a robot.
+                        </p>
+
+                    <p>Requires Python 3 or greater. Tested with Python 3.7</p>
+                    <h3 id="assembler-usage">Assembler Usage</h3>
+                    <p>Python 3</p>
+                    <pre><code><span class="hljs-keyword">python3</span> <span class="hljs-symbol">&lt;assembly_input&gt;</span>.s <span class="hljs-symbol">&lt;hex_output&gt;</span>.hex
+                    </code></pre><p><strong><em>Note: del requires 3 digits, mot/led requires 1 digits, movl/movh requires 2 digits.</em></strong> </p>
+                    <h3 id="robot-isa">Robot ISA</h3>
+                    <pre><code>
+                    mot port, mode [0000]
+                    HEX: 0xPM
+                    BIN: 0000 xxxx pppp mmmm
+                    p = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">port</span>&gt;</span></span>
+                    m = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">mode</span>&gt;</span></span>
+                    
+                    
+                    movl val, dest [0010]
+                    HEX: 2IIR
+                    BIN: 0010 iiii iiii rrrr
+                    i = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">info</span>&gt;</span></span>
+                    r = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span>&gt;</span></span>
+                    
+                    movh val, dest [0111]
+                    HEX: 7IIR
+                    BIN: 0111 iiii iiii rrrr
+                    i = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">info</span>&gt;</span></span>
+                    r = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span>&gt;</span></span>
+                    
+                    cpy src, dest [0101]
+                    HEX: 9xSD
+                    BIN: 0101 xxxx ssss dddd
+                    s = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">src</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    d = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">dest</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    
+                    <span class="hljs-section"># Jumps </span>
+                    jmp loc [<span class="hljs-string">0001</span>][<span class="hljs-symbol">0000</span>]
+                    HEX: 10Lx
+                    BIN: 0001 0000 llll xxxx
+                    l = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">location</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    
+                    jz cmp, loc [<span class="hljs-string">0001</span>][<span class="hljs-symbol">0001</span>]
+                    HEX: 11CL
+                    BIN: 0001 0001 cccc llll
+                    c = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">compare</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    l = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">location</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    
+                    jns ... [<span class="hljs-string">0001</span>][<span class="hljs-symbol">0010</span>]
+                    HEX: 12CL
+                    BIN: 0001 0010 cccc llll
+                    c = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">compare</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    l = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">location</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    
+                    jnz ... [<span class="hljs-string">0001</span>][<span class="hljs-symbol">0011</span>]
+                    HEX: 13CL
+                    BIN: 0001 0011 cccc llll
+                    c = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">compare</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    l = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">location</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    
+                    js ... [<span class="hljs-string">0001</span>][<span class="hljs-symbol">0100</span>]
+                    HEX: 14CL
+                    BIN: 0001 0100 cccc llll
+                    c = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">compare</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    l = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">location</span> <span class="hljs-attr">reg</span>&gt;</span></span>
+                    
+                    led port, mode [0011]
+                    HEX: 3xPM
+                    BIN: 0011 xxxx pppp mmmm
+                    p = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">port</span>&gt;</span></span>
+                    m = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">mode</span>&gt;</span></span>
+                    
+                    del sec [0100]
+                    HEX: 8TTT
+                    BIN: 1000 tttt tttt tttt
+                    t = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">time</span>&gt;</span></span>
+                    
+                    nop
+                    HEX: FFFF
+                    BIN: 1111 1111 1111 1111
+                    sub regA, regB, dest
+                    
+                    subtract
+                    HEX: CABD
+                    BIN: 1100 aaaa bbbb dddd
+                    a = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span> <span class="hljs-attr">a</span>&gt;</span></span>
+                    b = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span> <span class="hljs-attr">b</span>&gt;</span></span>
+                    d = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">dest</span>&gt;</span></span>
+                    
+                    add regA, regB, dest
+                    HEX: DABD
+                    BIN: 1101 aaaa bbbb dddd
+                    a = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span> <span class="hljs-attr">a</span>&gt;</span></span>
+                    b = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span> <span class="hljs-attr">b</span>&gt;</span></span>
+                    d = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">dest</span>&gt;</span></span>
+                    
+                    mul regA, regB, dest
+                    HEX: EABD
+                    BIN: 1110 aaaa bbbb dddd
+                    a = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span> <span class="hljs-attr">a</span>&gt;</span></span>
+                    b = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">reg</span> <span class="hljs-attr">b</span>&gt;</span></span>
+                    d = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">dest</span>&gt;</span></span>
+                    
+                    AAAA - halt
+                    
+                    // NOT DOING
+                    loop time [<span class="hljs-string">0101</span>][<span class="hljs-symbol">0000</span>]
+                    endl [<span class="hljs-string">0101</span>][<span class="hljs-symbol">0001</span>]
+                    
+                    halt - invalid instruction
+                    secs/time: fixed point only
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "../css/styles.css"/>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "../index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "../projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div class = "content">
+            <div class = "row-text">
+                <h2>Straight Body</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/x5xL1CM19H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class = "description">
+                    <h2 id="inspiration">Inspiration</h2>
+                    <p>We wanted to explore realistic problems that everyone, including us students, ran into on a daily basis. What we noticed is that one of the biggest problems that we face has to do with something that seems small - our posture. Many Americans spend hours upon hours sitting down at a desk and facing their screen. Many if not all fall into bad posturing that results into long-term health issues. Muscle instability, back pain, neck pain, and other possible chronic diseases stem from the correctness of our posture. As a result, we wanted to look into ways that we can help notify people of any posture issues. With this, we also decided to branch into screen time. Everyone knows that long-term exposure to screens can result in significant health detriments specific to one&#39;s vision. Thus, we decided to look into both posture and screen time for our project.</p>
+                    <h2 id="what-it-does">What it does</h2>
+                    <p>Our program records the users posture and gaze relevant to the screen over a certain period of time. While the program is running, it will record a contoured outline of the user and determine any significant postural issues by comparing the total contoured area. For gaze detection, we utilized a previous dataset to focus in on the face and eye portions of the user. This program records the amount of time the eyes are spent focused on the screen so it is more optimized to actual screen time versus a total time counter.</p>
+                    <h2 id="how-we-built-it">How we built it</h2>
+                    <p>We separated our project into two main portions: the front-end and back-end of our desktop app. 
+                    Front-End: On the front-end of our project, we utilized html, javascript, and css to create a website. This website has a login-page for users to create their own account and hence log in. The website has two main segments. The dashboard portion of the website shows what exactly is being recorded and also shows how we obtain our data. The second segment of our project is the analytics which access the data from the google cloud firebase. We then see charts of the live data being recorded and also icons for our notifications for posture alerts, screen time breaks, etc.</p>
+                    <p>Back-End: The back-end of our project we separated into eye detection and posture files. For both of these files we had to focus on mainly using opencv and python. For our posture segment, we utilized opencv to calculate a contoured version of the webcam image. We then utilized this contoured version to outline the body of the user and from there we collected the data of the total area of the contoured image. Using this area data, we can compare to the normal average area of the user to determine how significant of a different their shift in posture makes to this area. Then our program will notify the user of any prolonged changes in posture based off the percent change in the collected area to the running average of the user. For the eye detection portion of our project, we had to import dlibs. We also then imported an existing database of filters for recognizing the faces of individuals. After using this database to determine the location of the face, we then determined the location of the eyes. After finding the location of the eyes, we changed the webcam image to grayscale which left a contrast in white and black. Utilizing this contrast, we were able to separate the pupil and the whites of the eye. Then by comparing the area of the white of the eyes and of the pupil we can determine which direction the eyes are looking and also therefore whether the eye is making contact with the screen. We then recorded the time values for which the eye was in contact with the screen. After a certain time we send notifications to take a break. Additionally, the eye detection also has a blink method that keeps track of the amount of blinks that the user does. Prolonged screen exposure can cause someone to blink less so we also compare the blink count to the average blink count that is normal. We then sent all of this data to firebase which is a database from Google for one of the additional challenges. This data is then accessed by the front-end.</p>
+                    <h2 id="challenges-we-ran-into">Challenges we ran into</h2>
+                    <p>There were a couple significant challenges we ran into. The first being from the posture portion of our project. It is sometimes hard to create conditions for our contour and our frame that fit every single environment. Our contours are based on the changes in light and dark of the hsv frame. However, there are still some inconsistencies regarding the lighting and the environment that the user in that is not always accounted for. The way we attempted to combat this challenge was to adjust the parameters of our contours and our threshold in order to obtain the most accurate data as possible. Another challenge we faced was the eye detection as well. This eye detection program also had some issues regarding how to determine the contact of the screen whenever certain conditions were not met. We also struggled in collecting our data as the cloud had a limited amount of space and our data was being recorded every millisecond.</p>
+                    <h2 id="accomplishments-that-we-re-proud-of">Accomplishments that we&#39;re proud of</h2>
+                    <p>All in all, this was a difficult project, but we are proud of certain accomplishments that we made during this hackathon. We were able to adapt to completely different languages as 3 out of the 5 participants had little to no coding experience prior to this event. Another accomplishment that we&#39;re proud of is that we were able to utilize opencv relatively well to be able to solve our problems. The methods were difficult but we were able to find a way to use them. 
+                    Another accomplishment is that we were able to create a standing website with relative functionality. We also were able to connect all our data to a cloud database which is something we hadn&#39;t done before.</p>
+                    <h2 id="what-we-learned">What we learned</h2>
+                    <p>We learned a lot about how opencv works and also how any sort of webcam program functions. We learned about all the  proper packages to import and also about the compatibility of the different versions of python. We also learned about the workings of javascript and to integrate it within css and html. We learned how to create a proper website and also to connect our data to a database, specifically google firebase. Additionally we learned about how to collaborate over github as many of us were not experienced with coding beforehand.</p>
+                    <h2 id="what-s-next-for-straight-body">What&#39;s next for Straight Body</h2>
+                    <p>Straight Body for now has some small inconsistencies and issues with environments and is not currently applicable to every single user. However, the idea and the structure has great potential to be added upon. For the future, possibly adding a machine learning component of the program would help correct the accuracy of a lot of our methods. Additionally, it is worth exploring different ways to analyze the same data that we received. With further research, our results may provide greater significance to society and to any everyday user of our program.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
