@@ -48,7 +48,7 @@
             <!-- Tiles -->
             <div class = "tile-row">
                 
-                <a class = "tile-link">
+                <a class = "tile-link" href = "./projects.html">
                     <div class = "tile tile-3">
                         <img src = "media/engineer.jpg"/>
                     </div>
@@ -57,11 +57,11 @@
                     </div>
                 </a>
 
-                <a class = "tile-link">
+                <a class = "tile-link" href = "./speaker.html">
                     <div class = "tile tile-3">
                         <img src = "media/speaker.PNG"/>
                     </div>
-                    <div class = "ulink tile-overlay">
+                    <div class = "tile-overlay">
                         <h3>SPEAKER</h3>
                     </div>
                 </a>
@@ -208,5 +208,13 @@
 
     </body>
 
-    <footer></footer>
+    <footer>
+        <script>
+            function scream() {alert("Link is not ready yet.")}
+            var e = document.getElementsByClassName("ulink");
+            for(let i = 0; i < e.length; i++){
+                e[i].onclick = scream;
+            }
+        </script>
+    </footer>
 </html>
