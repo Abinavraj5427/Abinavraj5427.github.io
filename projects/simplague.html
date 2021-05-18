@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "../css/styles.css"/>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "../index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "../projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div class = "content">
+            <div class = "row-text">
+                <h2>Simplague</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/QLZjgythQV8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class = "description">
+                    <p>#simplague</p>
+                    <p>Try this first: <a href="http://simplague.space/examples/index.html">http://simplague.space/examples/index.html</a>
+                    Or try out the site: <a href="http://142.93.60.94/examples/index.html">http://142.93.60.94/examples/index.html</a> (hopefully it works, if not we are working on it :) ) </p>
+                    <ul>
+                    <li>Working on getting the website on domain: simplague.space</li>
+                    <li>Domain is powered by domain.com</li>
+                    <li>Site is hosted by Digital Ocean Droplet (nginx)</li>
+                    <li><strong>Warning</strong>: loading times may take a couple of seconds</li>
+                    </ul>
+                    <h2 id="inspiration">Inspiration</h2>
+                    <p>Nearly 7 million people are affected by COVID-19 in our world. Of that population, 500,000 people have died. This disease is even deadlier than the common flu. </p>
+                    <p>This leads us to the question:
+                    <strong>How can we prevent the population from spreading any disease in an engaging and educative way?</strong></p>
+                    <p>In our modern world, we are currently facing a large scale pandemic, COVID-19. However, every now and then, we see people around the world not following various social distancing guidelines. Also with different disease characteristics, it&#39;s hard to find how people should behave during these times. Therefore, we decided to create a global simulation of any disease and population by manipulating various characteristics such as infection radius, infection probability, and participation rates. By showing the amount of deaths caused by you, the users, we want to encourage the user to follow various health guidelines.</p>
+                    <p>A popular game that many people have played via mobile applications, popularly known as PlagueInc. The goal of this game is to infect the entire world via simulation by manipulating various disease characteristics. However, we wanted to create another version of this, but more user-based. We tried to make the simulation as personal as possible with soft music and allowing the user to control both population characteristics and disease characteristics. With, this emotional impact created by this simulation, we hope to impact users to become more hygeinically aware and try to protect their health more.</p>
+                    <p>We were also inspired by Google Earth and various 3D renderings of the Earth. We wanted to create a simulation with user interaction to help users have a good user interface and able to attain knowledge in a new and engaging way. We rendered a globe as well with randomly generated populations to create this similar interface.</p>
+                    <h2 id="what-it-does">What it does</h2>
+                    <p>Our site is an interactive simulation site of the world to simulate any pandemic.</p>
+                    <p>Upon reaching the site, the user is presented with a loading animation to introduce them to the application. Next, the user is able to manipulate different variables on the left panel. Then, the user watches the globe change its features as the virus spreads. Finally, the user is presented with data regarding the simulated virus and its impact on the population.</p>
+                    <p>The website plays audio in the background to bring the emotional aspect out of the user. The site also allows for the user to rotate the globe to view various parts of the Earth and its spread. In the back-end, the program calculates which users are infected and which users are not infected based on the various manipulative factors. We created an algorithm based on the research found by [3Blue1Brown] (<a href="https://www.youtube.com/watch?v=gxAaO2rsdIs&amp;t=370s****">https://www.youtube.com/watch?v=gxAaO2rsdIs&amp;t=370s****</a>).</p>
+                    <h2 id="how-i-built-it">How I built it</h2>
+                    <p><img src="https://github.com/Abinavraj5427/simplague/blob/master/examples/textures/simplague_structure.png?raw=true" alt="alt text" title="Project Structure"></p>
+                    <ul>
+                    <li><p><strong>Three.JS</strong>: This was our first time ever using Three.JS. We used this as our browser based rendering engine. We looked at examples online of three.js projects and were inspired to create an interactive user interface. It is able to work with WebGL to create 3D rendered models.</p>
+                    </li>
+                    <li><p><strong>WebGL</strong>: This was our first time ever using WebGL. Specifically, we used this to create shaders. We originally wanted to color different parts of our globe red to show infections. This is also used manually by Three.JS.</p>
+                    </li>
+                    <li><p><strong>HTML, CSS, JS</strong>: These are basic tools used to render a webpage. We used them to build our UI with sliders and visual graphs.</p>
+                    </li>
+                    <li><p><strong>Canvas.JS</strong>: We used CanvasJS to generate the death graph per day. We will be able to create multiple graphs and statistics using this module.</p>
+                    </li>
+                    </ul>
+                    <h2 id="challenges-i-ran-into">Challenges I ran into</h2>
+                    <p>One of the issues we ran into was how to create the globe. Even if we created the globe, how would we know where to put each person. Our solution to this problem was to color map land to water in order to put different people in random locations.</p>
+                    <p>Another problem was computation time: each 5 days runs O(n^2) time complexity to calculate infection. This means that we cannot handle large population sizes for rendering. It will take a longer time to load than it already is taking to load.</p>
+                    <p>Our experiences in these languages, 3D modeling/rendering, and web hosting was very limited within our team. We had to learn many of the skills on the spot. We tried hosting our website on a DigitalOceanDroplet with a domain name from domain.com.</p>
+                    <h2 id="accomplishments-that-i-m-proud-of">Accomplishments that I&#39;m proud of</h2>
+                    <p><img src="https://github.com/Abinavraj5427/simplague/blob/master/examples/textures/world.png?raw=true" alt="alt text" title="Rendered Earth">  </p>
+                    <p>We were able to 3D render our world. We are able to manipulate various virulent factors to impact the population. We are able to properly render the transportation and disease infections based on color. We are able to compute social distance with global arc length and linear algebra.</p>
+                    <p>We were able to create user interactivity with music and sliders. This makes the interaction more engaging and enjoyable. The fact that we are able to compute large-scale calculations in a spherical coordinate system with a 2D screen using linear algebra, just amazes us as we hope it amazes you too.</p>
+                    <p><img src="https://github.com/Abinavraj5427/simplague/blob/master/examples/textures/input_ui.png?raw=true" alt="alt text" title="Input UI"> 
+                    <img src="https://github.com/Abinavraj5427/simplague/blob/master/examples/textures/output_ui.png?raw=true" alt="alt text" title="Output UI"></p>
+                    <h2 id="what-i-learned">What I learned</h2>
+                    <p>We learned how ThreeJS works and how shaders work together to color different parts of the program. Also, we also learned linear algebra used to calculate social distancing in the global environment. </p>
+                    <p>We also learned the mathematics behind how a virus variables affect the way it infects people. Finally, we learned how 3D rendering works with perspective, lighting, and movement functions.</p>
+                    <p>Finally, we learned how big of a loading time THREE.js takes to load the website. It takes a while to render based on the amount of computations we use.</p>
+                    <h2 id="what-s-next-for-simplague">What&#39;s next for simplague</h2>
+                    <ul>
+                    <li>Control over the population</li>
+                    <li>Shorter loading times</li>
+                    <li>Show effects of cures found</li>
+                    <li>Display graphs for visuals, with realtime data</li>
+                    </ul>
+                    <p>Resources:</p>
+                    <p><a href="https://www.worldometers.info/coronavirus/">https://www.worldometers.info/coronavirus/</a></p>
+                    <p><a href="https://www.youtube.com/watch?v=gxAaO2rsdIs&amp;t=370s****">https://www.youtube.com/watch?v=gxAaO2rsdIs&amp;t=370s****</a> (description has more resources)</p>
+                    e used React.js for the front end, and Node.js, Express.js, and MongoDB for the back end.</p>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

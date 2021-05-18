@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "../css/styles.css"/>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "../index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "../projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div class = "content">
+            <div class = "row-text">
+                <h2>Edfusion</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/tyUcUo1UqDQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class = "description">
+                    <h1 id="edfusion">edfusion</h1>
+                    
+                    <p>Today, we present a profound project to <strong>stop all student confusion</strong> in academic lessons and lectures. At the same time we will be trying to <strong>improve the quality</strong> of the lessons and lectures given by educators.</p>
+                    <p>Especially, today, with coronavirus spreading, students are more afraid to reveal their questions, answers, and thoughts openly over virtual meetings such as Zoom. </p>
+                    <p>When was the last time you were too embarrassed to ask a question in class? Or if you are an educator, have you ever found students disliking your class or not participating enough?</p>
+                    <p>You&#39;re not alone. Never feel these fears or insecurities again.</p>
+                    <p>The answer is simple: <strong>edfusion</strong></p>
+                    <h2 id="inspiration">Inspiration</h2>
+                    <p>Our goal was to <strong>relieve the embarrassment</strong> that students have when asking questions. At the same time, this helps teachers make their lessons more effective <strong>real-time!</strong></p>
+                    <p>We wanted to prevent students who are simply scared from reaching out to ask any questions; and with online education on the rise, this issue has become more urgent and relevant. We introduce the idea of anonymity in questions and feedback to help both teachers in their teaching and improve the participation of students in an educational environment.</p>
+                    <p>Our project structure idea was adapted from the intuition behind the popular educational game tool known as Kahoot. The idea was to use a simple code to connect to a classroom while maintaining anonymity from the eyes of the educator. Maintaining anonymity helps protect students privacy in cases where they do not want to reveal their positions to each other. We brought this same idea of anonymity to the idea of asking questions in both a <strong>physical and virtual classroom setting.</strong></p>
+                    <p>Do you want to continue being hesitant from asking questions in your virtual or physical classrooms? Or do you want to help revolutionize the world&#39;s current education system?</p>
+                    <p>If you chose to help us revolutionize this system...</p>
+                    <p><strong>Help us promote edfusion</strong> to make it widely accessible to empower students of all kinds and improve the quality of your teachers.</p>
+                    <h2 id="how-we-built-it">How we built it</h2>
+                    <p>We have 2 parts to this education system:</p>
+                    <ol>
+                        <li>Student Web App</li>
+                        <li>Educator Desktop App</li>
+                    </ol>
+                    <h3 id="student-web-app">Student Web App</h3>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/webappstructure.PNG?raw=true"/></p>
+                    <p>NodeJS has frameworks for both mongodb and expressjs. ExpressJS takes the data from MongoDB Atlas and passes it to HTML, CSS, JS static files. The data in the form of JSON is passed with HTTP requests using POST, GET, PUT, etc making this a REST API. NodeJS is simply run with <code>npm start</code> which ran nodemon in our case for providing immediate updates to the server. The Express server runs on a local port of 8080 to serve the files and access the routes for the api, but it is set to dynamically update to the cloud&#39;s <code>process.env.PORT</code>. The student web app is hosted entirely on heroku.</p>
+                    <h3 id="educator-desktop-app">Educator Desktop App</h3>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/desktopappstructure.PNG?raw=true"/></p>
+                    <p>MongoDB has a stream reader that notifies the codebase when there is an update in the database. Upon listening for database updates, the code must update the desktop UI. To do this, data is sent to the built in NodeJS backend in <code>main.js</code> which then communicates via ipc (unlike REST or HTTP from our webapp&#39;s API) to the <code>renderer.js</code>. This allows for JS to update dynamically based on changes to the backend. The front end ElectronJS technology is changing its graphs and charts with Chart.js. We also have a notifications UI to update questions which educators can interact with on a computer or SMARTBoard for physical/virtual lessons. </p>
+                    <h2 id="challenges-we-ran-into">Challenges we ran into</h2>
+                    <h3 id="limiting-database-calls">Limiting Database Calls</h3>
+                    <p>One of the biggest problems we ran across was getting live updates while limiting the amount of database calls we make. To do this, we had to listen to the database for a general update and find the specific part that was updated.</p>
+                    <h3 id="closing-database-connections">Closing Database Connections</h3>
+                    <p>Another issue we ran across was the amount of unclosed database connections we had come across. We needed to close all the connections we had to MongoDB to avoid overloading it and crashing it several times.</p>
+                    <h3 id="handling-notifications">Handling Notifications</h3>
+                    <p>We ran across an issue of having multiple notifications appear for each teacher that decides to run a classroom creating a decentralized network which was unintended. We had to check for notifications and their relation to the teacher in order to prevent unnecessary notifications to other users.</p>
+                    <h3 id="using-developmental-servers">Using Developmental Servers</h3>
+                    <p>Another developmental struggle we had to overcome was running two node servers to test both the student app and the educator desktop app. One cannot work without the other, so both had to be running to navigate the entire application.</p>
+                    <h2 id="accomplishments-that-we-re-proud-of">Accomplishments that we&#39;re proud of</h2>
+                    <h3 id="1-a-working-web-app-with-animations">1. A working web app with animations</h3>
+                    <p>We were able to construct a fully working web application that connects to and talks to the MongoDB Atlas. Within the landing page, we are most proud of the downward flow of the landing page. This brings more interactivity and attraction to our product.</p>
+                    <h3 id="2-a-working-desktop-app-with-notifications">2. A working desktop app with notifications</h3>
+                    <p>Like the web app, we have various animations on the educators application. We also have working notifications so that teachers who teach with Zoom ScreenShare or a SMARTBoard can see questions live during a lesson. This can help clear confusion mid-lesson through a desktop notification.</p>
+                    <h3 id="3-scalability">3. Scalability</h3>
+                    <p>The MongoDB Atlas allows for live usage of our webapp and desktop app. The student platform is able to communicate with the educators platform anywhere with a proper internet connection. Our education system can handle any amount of classrooms and students, allowing for widespread growth around the world. With paid expansion, we can grow the storage of the database to unimaginable limits allowing for more accessibility.</p>
+                    <h2 id="what-we-learned">What we learned</h2>
+                    <h3 id="cloud-based-http">Cloud Based HTTP</h3>
+                    <p>We learned how to host and serve html files with an express server. JS files that work with html makes HTTP requests with the express.js to get data from the database. We had to put our files in a folder called public. We also had to setup our server start configuration in package.json. This would allow heroku to host our server. Heroku will not allow you to make calls to localhost, so you need to access its own port on the cloud with lines like <code>process.env.PORT</code> rather than an explicit local machine port.</p>
+                    <h3 id="mongodb-pool-overflows">MongoDB Pool Overflows</h3>
+                    <p>Another thing that we learned is the importance of closing our connections via mongodb. We need to call <code>mongo.close()</code> at the end of each JS Promise. Otherwise, the pool will overflow with requests. This would cause the entire database to crash. We also found out that we could allow any ip address to access the mongodb rather than a single ip one. Finally, I realized with MongoDB Atlas, the data is accessible by everyone so handling data can be difficult sometimes from multiple users.</p>
+                    <h2 id="what-s-next-for-edfusion">What&#39;s next for edfusion</h2>
+                    <p>We believe this education system is nearly production ready. We have several things we want to do before deploying it to be used. There are several ideas for improvement as well. </p>
+                    <h3 id="a-new-database">A New Database</h3>
+                    <p>One of the things that we plan to do is to replace the MongoDB database with an SQL structure with a much more affordable and scalable DB such as Google Sheets API and Google Drive API. In this way, storage is in the hands of the educators themselves to keep track of their own histories rather than relying on us, the developers.</p>
+                    <h3 id="more-factors">More factors</h3>
+                    <p>Additionally, we would like to add more factors to the webapp and desktop app such as a boring scale. In this way, teachers and educators will know how interesting their lectures actually are. Combined with knowing the questions, reviews, and confusion of their lectures, with a boring scale, lectures can be much more engaging.</p>
+                    <h3 id="ratings-for-teachers">Ratings for teachers</h3>
+                    <p>Similarly, inspired by Rate My Professors, we can also post teacher improvements or qualities and reviews on websites so other students can decide whether they want to take the class. This education system can create a marketplace styled platform for learning about teaching options while helping students understand content and helping teachers understand how they can improve.</p>
+                    <h3 id="clean-code">Clean Code</h3>
+                    <p>edfusion also has lots of spaghetti code on the desktop side. We plan to clean all of it up to enable future developers to continue developing on this product. </p>
+                    <h3 id="ui">UI</h3>
+                    <p>edfusion was created with an initiative on having a strong user interface. We intend to continue improving our user interface in the following ways: making elements more material like, possibly adding sound effects, and adding more animations. With better UI, we can encourage feasibility in the usage of this education system while also making the learning much more engaging.</p>
+                    <h3 id="recaptcha-to-prevent-bots">reCaptcha to Prevent Bots</h3>
+                    <p>Although we initially planned to use reCaptcha to handle Selenium bots from trying to misuse the system to deploy numerous questions to the teacher, we found out that it takes time for Google to approve the reCaptcha security system for a site. Therefore, given the approval time, we could not implement it in our web app.</p>
+                    <h2 id="how-to-use-it">How to Use It</h2>
+                    <h3 id="students">Students</h3>
+                    <p><strong>Three Simple Steps</strong></p>
+                    <ul>
+                    <li>Students are able to log into a classroom generated by an educator.</li>
+                    </ul>
+                    <p>Log In</p>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/studenturl.PNG?raw=true" alt="Join Class"></p>
+                    <p>Join Class <br>
+                    <img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/enterPin.JPG?raw=true" alt="Join Class"></p>
+                    <ul>
+                    <li>Students are able to ask questions anonymously. Students are also able to update their confusion percentage, which notifies the teacher of the class&#39; confusion statistics.</li>
+                    </ul>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/studentfull2.PNG?raw=true" alt="Join Class"></p>
+                    <ul>
+                    <li>When the class ends, students can rate the lesson and provide feedback.</li>
+                    </ul>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/studentfull3.PNG?raw=true" alt="Join Class"></p>
+                    <h3 id="educators">Educators</h3>
+                    <p><strong>Three Simple Steps</strong></p>
+                    <ul>
+                    <li>Educators login to simply create a classroom for students to join.</li>
+                    </ul>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/logIn.png?raw=true" alt="Join Class"></p>
+                    <ul>
+                    <li>Educators receive notifications of anonymous questions and average class confusion <strong>real time</strong> to adjust their lecture <strong>real time</strong>.</li>
+                    </ul>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/desktop3.PNG?raw=true" alt="Join Class"></p>
+                    <ul>
+                    <li>Educators may click on notifications to instantly resolve them or mute any disturbances.</li>
+                    </ul>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/desktop5.PNG?raw=true" alt="Join Class"></p>
+                    <ul>
+                    <li>Educators can review student reviews and ratings and overall teaching/class improvement over time.</li>
+                    </ul>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/desktop6.PNG?raw=true" alt="Join Class"></p>
+                    <p><img src="https://github.com/Abinavraj5427/EdFusionStudent/blob/master/presentation/desktop7.PNG?raw=true" alt="Join Class"></p>
+                    <h2 id="links-">Links:</h2>
+                    <h4 id="-edfusion-student-"><strong>edfusion Student:</strong></h4>
+                    <p>visit (<a href="http://edfusion.herokuapp.com">http://edfusion.herokuapp.com</a>)</p>
+                    <h4 id="-edfusion-educator-"><strong>edfusion Educator:</strong></h4>
+                    <p>install (<a href="https://drive.google.com/file/d/1KvmludPpt0NRH1-ye62MLPzRC0YpmR82/view?usp=sharing">https://drive.google.com/file/d/1KvmludPpt0NRH1-ye62MLPzRC0YpmR82/view?usp=sharing</a>)</p>
+                    <p><strong>Educator Desktop App Login Credentials:</strong> </p>
+                    <ul>
+                    <li>username: <code>abc@gmail.com</code></li>
+                    <li>password: <code>abc123</code></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

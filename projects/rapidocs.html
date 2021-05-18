@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital@1&family=Quattrocento+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href = "../css/styles.css"/>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div class = "top-menu">
+            <!-- Left Menu -->
+            <div>
+                <a href = "../index.html"><h1>ABINAVRAJ GANESH SUDHAKAR</h1></a>
+            </div>
+
+            <!-- Right Menu -->
+            <div id = "right-menu">
+                <a><h4>About</h4></a> <!-- Education, Work -->
+                <a href = "../projects.html"><h4>My Work</h4></a> <!-- Projects, Art, Research -->
+                <a target = "_blank" href = "https://www.linkedin.com/in/abinavraj-ganesh-sudhakar-8aa185169/"><h4>LinkedIn</h4></a>
+            </div>
+        </div>
+
+        <div class = "content">
+            <div class = "row-text">
+                <h2>Rapidocs</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/SwtwWHvsRy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class = "description">
+                    <h2 id="inspiration">Inspiration</h2>
+                        <p>Everyone in our group asked the question <strong>&quot;we&#39;re in the digital age, so why do we have to fill out a different set of paperwork every time we go to a different doctor&#39;s office?&quot;</strong> After some research, we figured out why. </p>
+                        <p>It&#39;s because the current EMR (Electronic Medical Record) industry is monetarily incentivized to not enable compatibility between different platforms. Say you&#39;re a physician and you diagnose your patient with a broken wrist and refer them to an orthopedic surgeon. Giving your patient the surgeon&#39;s information is easy, but trying to give the surgeon your patient&#39;s information? You might as well trying running through a brick wall. Odds are that your patient&#39;s file is tied up in your EMR system, because it&#39;s 2020 and a room full of filing cabinets is <em>soooo</em> 2000. </p>
+                        <p>One would think that should make it easy because, if it&#39;s digital, you should be able to export it, but that&#39;s just not how it works. See, you and your surgeon friend are probably using different EMR systems and the companies who make those systems look at that as opportunity. Because, if you&#39;re EMR doesn&#39;t let you effectively communicate then you&#39;re likely to switch and get the one your peers use. It&#39;s just like how Apple doesn&#39;t let android users text with iMessage even though they could easily add that functionality. To put it simply, &quot;being consumer friendly is bad business.&quot; </p>
+                        <p>Now, you may be asking &quot;why is this such a big problem? Can&#39;t all the doctors in the world just switch to the best EMR system?&quot; The answer is no, because not every office is as profitable as the next, so not every office can afford the best software. If you have to choose between the new blood testing equipment that could save lives or an EMR system, you&#39;re going to choose the blood testing equipment almost every time.  </p>
+                        <p>But that&#39;s not to say the ability to communicate wouldn&#39;t save lives. I mean the <strong>DATA</strong> will keep you up at night. </p>
+                        <p><strong>1. Referral leakage for a health care system can average anywhere from <a href="https://www.mass.gov/doc/2011-examination-of-health-care-cost-trends-and-cost-drivers-with-appendix/download">55-65%</a></strong>
+                        This means that even a marginal improvement could lower the cost of healthcare by more than 20%. Imagine how many more people would be able to afford healthcare. </p>
+                        <p><strong>2.  <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1495590/">63% of referring physicians</a> are dissatisfied with the current referral process due to lack of timeliness of information and inadequate referral letter content. And [70% of the specialists] (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3160594/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3160594/</a>) rate the referral information they receive as poor.</strong>
+                        This is a HUGE problem. A lack of communication often leads to poor continuity of care, delayed diagnosis, increased risk for litigation, and <em>expensive</em> extra testing. </p>
+                        <p><strong>3. [86% of mistakes] (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3160594/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3160594/</a>) made in the healthcare industry are administrative.</strong> 
+                        That&#39;s a chilling reality when you think about how medical errors continue to be the third biggest  killer in the U.S. Behind only cancer and heart disease. And it only gets worse when you realize it&#39;s also basically just because EMR providers are greedy. </p>
+                        <h2 id="so-how-does-our-app-let-you-solve-this-problem-">So how does our app let you solve this problem?</h2>
+                        <p>TLDR: it gives patients the ability to enter, edit, and travel with their data. Then, most importantly, provide their medical record to healthcare providers quickly and in a format that is compatible with most EMR&#39;s. </p>
+                        <p>Patients can add their tests, diagnosis, procedures, medication, allergies, and appointments through one intuitive user-interface. They can then give a healthcare provider access to their chart by navigating to the &quot;My Doctor&#39;s&quot; page in our app and typing in their provider&#39;s phone number or email. </p>
+                        <p>Once a patient has added their provider, the provider will be able to see and download their chart in the &quot;My Patient&#39;s&quot; page of our app. No hassle involved. </p>
+                        <p>It&#39;s important to highlight that our project isn&#39;t trying to replace full EMR systems, it&#39;s just trying to free up the data that they are hogging. </p>
+                        <h2 id="so-how-does-our-app-let-you-solve-this-problem-">So how does our app let you solve this problem?</h2>
+                        <p>TLDR: it gives patients the ability to enter, edit, and travel with their data. Then, most importantly, provide their medical record to healthcare providers quickly and easily. </p>
+                        <p>Patients can add their tests, diagnosis, procedures, medication, allergies, and appointments through one intuitive user-interface. They can then give a healthcare provider access to their </p>
+                        <h2 id="how-i-built-it">How I built it</h2>
+                        <p>We make use of Google&#39;s Firebase API for almost every aspect of our web app. To start, we allow users to create accounts through Firebase&#39;s ability to authenticate using Google Sign-In. </p>
+                        <p>Once a user is registered they can then enter their information through an intuitive UI created with express.js, css, and HTML. This data is then stored and accessed through Firebase&#39;s API. </p>
+                        <h2 id="challenges-i-ran-into">Challenges I ran into</h2>
+                        <p>Oddly enough most of our issues came when we tried to apply advanced styling. We learned a lot about how Express.js components have root styles that require more specific selectors to change. </p>
+                        <p>We kept using a single SASS file to style the entire project. Editing this one CSS controlling file would constantly cause large merge conflicts. This would cause us to slow down the development process. </p>
+                        <h2 id="accomplishments-that-i-m-proud-of">Accomplishments that I&#39;m proud of</h2>
+                        <p>We are proud of being able to complete a PDF and timeline of all the events and data. It seems to help enhance the user interface. We are also proud of being able to complete the CSS styling as well.</p>
+                        <p>We are proud of being able to override the CSS of the React premade components. We were able to learn and use Sass to optimize our CSS. Finally, we were able to both deploy and host our project which brought it to the next level.</p>
+                        <h2 id="what-i-learned">What I learned</h2>
+                        <p>How to use express.js and integrate it with the Google cloud API. I also learned how to generate a PDF from Javascript and data stored in the Firebase cloud.</p>
+                        <h2 id="what-s-next-for-rapidocs">What&#39;s next for rapidocs</h2>
+                        <p>We want to try and find a user-base for our project since we really believe it could have a positive impact on healthcare! </p>
+                        <h2 id="admin-login">Admin Login</h2>
+                        <p>You can login with these admin credentials to see how that page works:
+                        username: admin@admin.com
+                        password: admin1234</p>
+                       
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
