@@ -15,6 +15,11 @@ function run() {
     }
 }
 
+document.getElementById("rb2").addEventListener("mouseenter", run2);
+function run2() {
+    document.getElementById("rb2").style.display = 'none';
+}
+
 
 function next(){
     document.getElementById("main1").style.display= 'none';
@@ -34,6 +39,11 @@ function next4(){
 function next3(){
     document.getElementById("main4").style.display= 'none';
     document.getElementById("main3").style.display= 'flex';
+}
+
+function next5(){
+    document.getElementById("main6").style.display= 'none';
+    document.getElementById("main4").style.display= 'flex';
 }
 
 function wrong(){
